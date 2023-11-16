@@ -39,6 +39,7 @@
             passwordTextBox = new TextBox();
             confirmPasswordTxt = new TextBox();
             createAccountBttn = new Button();
+            LoginButton = new Button();
             SuspendLayout();
             // 
             // firstnameLabel
@@ -131,11 +132,22 @@
             createAccountBttn.UseVisualStyleBackColor = true;
             createAccountBttn.Click += createAccountBttn_Click;
             // 
+            // LoginButton
+            // 
+            LoginButton.Location = new Point(486, 345);
+            LoginButton.Name = "LoginButton";
+            LoginButton.Size = new Size(112, 34);
+            LoginButton.TabIndex = 11;
+            LoginButton.Text = "Login";
+            LoginButton.UseVisualStyleBackColor = true;
+            LoginButton.Click += LoginButton_Click;
+            // 
             // createaccountForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(LoginButton);
             Controls.Add(createAccountBttn);
             Controls.Add(confirmPasswordTxt);
             Controls.Add(passwordTextBox);
@@ -166,5 +178,6 @@
         private TextBox passwordTextBox;
         private TextBox confirmPasswordTxt;
         private Button createAccountBttn;
+        private Button LoginButton;
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace toolsuiteapp.Model
 {
    
-    internal class userAccount
+    public class UserAccount
     {
         public string firstName {  get; set; }// change the case of the properties
         public string lastName { get; set; }

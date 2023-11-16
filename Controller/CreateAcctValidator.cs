@@ -50,18 +50,30 @@ namespace toolsuiteapp.Controller
             return errors;
         }
 
+        public static string GenerateSalt(int size = 32)// can change the size later 
+        {
+            using (var rng = new RNGCryptoServiceProvider())// use RNGCryptoServiceProvider class to generate secure random salt 
+            {
+                var saltBytes = new byte[size];
+                rng.GetBytes(saltBytes);
+                return Convert.ToBase64String(saltBytes);
+            }
+        }
+
         //hash the password
 
-        public static string hashPassword(string password)
+        public static string hashPassword(string password,string salt)
         {
             using (var sha256  = SHA256.Create())//creates new instance of the hash algorithm
             {
-                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                var saltedPassword = string.Concat(password, salt);// concatenate password and salt before hashing 
+                byte[] saltedPasswordBytes = Encoding.UTF8.GetBytes(saltedPassword);
+                byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
 
                 StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
+                foreach(var b in hashBytes)
                 {
-                    builder.Append(bytes[i].ToString("x2"));
+                    builder.Append(b.ToString("x2"));
                 }
                 return builder.ToString();
             }
