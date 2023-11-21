@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using toolsuiteapp.Controller;
@@ -22,6 +23,7 @@ namespace toolsuiteapp.View
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
+          
             string emailAddress1 = emailTextBox.Text;
             string password1 = PasswordTextBox.Text;
             var loginValidators = new LoginValidators()
@@ -32,9 +34,10 @@ namespace toolsuiteapp.View
             };
             //call the validation method
             List<string> errorValidations = loginValidators.detailsValidation();
+            string emailPattern = @"^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]+$";
+            Regex regex = new Regex(emailPattern);
 
-
-            if (errorValidations.Count == 0)
+            if (errorValidations.Count == 0 && regex.IsMatch(emailTextBox.Text))
             {
                 //TO-DO: retrieve the salt and hashed password for the given email from the database
                 // hash the password input by the user with this retrieved salt 
@@ -75,6 +78,11 @@ namespace toolsuiteapp.View
         public void grantAccess()
         {
             // open homepage here 
+        }
+
+        private void ForgotPasswordBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using toolsuiteapp.View;
 using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 
 namespace toolsuiteapp.Controller 
 {
@@ -15,6 +16,7 @@ namespace toolsuiteapp.Controller
         
         public List<string> acctValidators( string firstName, string lastName, string emailAddress, string password, string confirmPassword)
         {
+            
             List<string> errors = new List<string>();
             
 
@@ -32,7 +34,6 @@ namespace toolsuiteapp.Controller
             {
                 errors.Add("please fill all textboxes");
             }
-
             if (string.IsNullOrEmpty(password))
             {
                 errors.Add("please fill all textboxes");
@@ -65,17 +66,17 @@ namespace toolsuiteapp.Controller
         public static string hashPassword(string password,string salt)
         {
             using (var sha256  = SHA256.Create())//creates new instance of the hash algorithm
-            {
+            { 
                 var saltedPassword = string.Concat(password, salt);// concatenate password and salt before hashing 
-                byte[] saltedPasswordBytes = Encoding.UTF8.GetBytes(saltedPassword);
-                byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                byte[] saltedPasswordBytes = Encoding.UTF8.GetBytes(saltedPassword);// convert into a byte array
+                byte[] hashBytes = sha256.ComputeHash((saltedPasswordBytes));// compute the hash 
 
                 StringBuilder builder = new StringBuilder();
                 foreach(var b in hashBytes)
                 {
                     builder.Append(b.ToString("x2"));
                 }
-                return builder.ToString();
+                return builder.ToString();// returns the complete hash as a string 
             }
             
         }

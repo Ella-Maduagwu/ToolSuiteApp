@@ -35,7 +35,7 @@
             passwordlabel = new Label();
             confirmpasswordLabel = new Label();
             lastnameText = new TextBox();
-            emailTextbox = new TextBox();
+            emailTextBox = new TextBox();
             passwordTextBox = new TextBox();
             confirmPasswordTxt = new TextBox();
             createAccountBttn = new Button();
@@ -101,12 +101,12 @@
             lastnameText.Size = new Size(150, 31);
             lastnameText.TabIndex = 6;
             // 
-            // emailTextbox
+            // emailTextBox
             // 
-            emailTextbox.Location = new Point(406, 173);
-            emailTextbox.Name = "emailTextbox";
-            emailTextbox.Size = new Size(150, 31);
-            emailTextbox.TabIndex = 7;
+            emailTextBox.Location = new Point(406, 173);
+            emailTextBox.Name = "emailTextBox";
+            emailTextBox.Size = new Size(150, 31);
+            emailTextBox.TabIndex = 7;
             // 
             // passwordTextBox
             // 
@@ -151,7 +151,7 @@
             Controls.Add(createAccountBttn);
             Controls.Add(confirmPasswordTxt);
             Controls.Add(passwordTextBox);
-            Controls.Add(emailTextbox);
+            Controls.Add(emailTextBox);
             Controls.Add(lastnameText);
             Controls.Add(confirmpasswordLabel);
             Controls.Add(passwordlabel);
@@ -174,7 +174,7 @@
         private Label passwordlabel;
         private Label confirmpasswordLabel;
         private TextBox lastnameText;
-        private TextBox emailTextbox;
+        private TextBox emailTextBox;
         private TextBox passwordTextBox;
         private TextBox confirmPasswordTxt;
         private Button createAccountBttn;

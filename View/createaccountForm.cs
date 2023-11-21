@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using toolsuiteapp.Controller;
 using toolsuiteapp.Model;
 using toolsuiteapp.Data;
+using System.Text.RegularExpressions;
 
 namespace toolsuiteapp.View
 {
@@ -24,7 +25,7 @@ namespace toolsuiteapp.View
         {
             string firstName1 = firstNameTextBox.Text;
             string lastName1 = lastnameText.Text;
-            string emailAddress = emailTextbox.Text;
+            string emailAddress = emailTextBox.Text;
             string password = passwordTextBox.Text;
             string confirmPassword = confirmPasswordTxt.Text;
 
@@ -32,8 +33,9 @@ namespace toolsuiteapp.View
             var controller = new CreateAcctValidator();
             //call the validation method
             List<string> validationErrors = controller.acctValidators(firstName1, lastName1, emailAddress, password, confirmPassword);
-
-            if (validationErrors.Count == 0)
+            string emailPattern = @"^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]+$";
+            Regex regex = new Regex(emailPattern);
+            if (validationErrors.Count == 0 && regex.IsMatch(emailTextBox.Text))
             {
                 string salt = CreateAcctValidator.GenerateSalt();// generate salt for the new user 
                 string hashedPassword = CreateAcctValidator.hashPassword(password, salt);//call the hashpassword method
@@ -44,7 +46,7 @@ namespace toolsuiteapp.View
                     email = emailAddress,
                     passwordHash = hashedPassword,
                     passwordSalt = salt
-                    // TO-DO: generate and assign a salt
+
                 };
 
                 var userRepository = new UserRepository();

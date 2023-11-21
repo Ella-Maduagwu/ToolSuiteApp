@@ -20,7 +20,7 @@ namespace toolsuiteapp.Data
 
         public void AddUser(Model.UserAccount user)
         {
-            using(var connection = new MySqlConnection(_connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -35,30 +35,31 @@ namespace toolsuiteapp.Data
                 command.ExecuteNonQuery();
             }
         }
-      
-       /** public bool emailExists(string email)
+
+        public bool EmailExists(string emailAddress)
         {
-            using ( var connection = new MySqlConnection(_connectionString))
+            using (var connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
-               using( var command = new MySqlCommand("SELECT COUNT(1) FROM users WHERE Email = @Email", connection)) {
-                    command.Parameters.AddWithValue("@Email", email);// add email address as a parameter to SQL command 
+                using (var command = new MySqlCommand("SELECT COUNT(1) FROM users WHERE Email = @Email", connection))
+                {
+                    command.Parameters.AddWithValue("@Email", emailAddress);// add email address as a parameter to SQL command 
                     // to protect against SQL injection attacks 
                     // ExecuteScalar returns the first column of the first row in the resut set
                     int userCount = Convert.ToInt32(command.ExecuteScalar());
                     return userCount > 0;
                 }
-               
+
             }
-       **/
+        }
+       
         
 
         public (string passwordHash, string Salt) GetUserPasswordInfo(string emailAddress1)
         {
-            try
-            {
                 using (var connection = new MySqlConnection(_connectionString))
                 {
+                try { 
                     connection.Open();
 
                     string query = "SELECT passwordHash, salt FROM users WHERE emailaddress = @Email";
@@ -78,14 +79,93 @@ namespace toolsuiteapp.Data
 
                     }
                 }
+                catch
+                {
+                    // maybe put the logger here 
+                }
                 return (null, null);
             } 
-            catch { 
-            // maybe i can put the logger here 
+            
+
+        }
+
+
+        public void StorePasswordResetToken(string userEmail, string resetToken, DateTime tokenExpiry)
+        {
+            using ( var connection = new MySqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                var command = connection.CreateCommand();
+                command.CommandText = "UPDATE users SET ResetToken = @resetToken, TokenExpiry = @tokenExpiry WHERE EmailAddress = @userEmail";
+
+                command.Parameters.AddWithValue ("@resetToken", resetToken);
+                command.Parameters.AddWithValue("@tokenExpiry", tokenExpiry);
+                command.Parameters.AddWithValue("@userEmail", userEmail);// check what the email coloumn is named as 
+
+                command.ExecuteNonQuery();
             }
 
         }
+
+        public (string resetToken, DateTime? tokenExpiry) GetResetTokenInfo(string emailAddress)
+        {
+            using (var connection = new MySqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT ResetToken, TokenExpiry FROM users WHERE EmailAddress = @email";// this line is to prevent Injection attacks 
+                using ( var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@email", emailAddress);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string resetToken = reader["ResetToken"] as string;
+                            DateTime? tokenExpiry = reader.IsDBNull(reader.GetOrdinal("TokenExpiry")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("TOkenExpiry"));
+
+                            return (resetToken, tokenExpiry);
+                        }
+
+                    }
+                }
+            }
+
+            return (null, null);
+        }
        
+        public void UpdateUserPassword(string emailAddress, string newHashedPassword,string newSalt)
+        {
+            using (var connection =new MySqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                var command = connection.CreateCommand();
+                command.CommandText = "UPDATE users SET PasswordHash = @PasswordHash,Salt = @Salt WHERE EmailAddress = @Email"; // check that the parameters align with the ones in the DB
+                command.Parameters.AddWithValue("@PasswordHash", newHashedPassword);
+                command.Parameters.AddWithValue("@Salt", newSalt);
+                command.Parameters.AddWithValue("@Email", emailAddress);
+
+                command.ExecuteNonQuery();
+            }
+
+            // add error handling and logger
+        }
+
+
+        public void ClearResetToken(string emailAddress)
+        {
+            using (var connection = new MySqlConnection(_connectionString))
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                command.CommandText = "UPDATE users SET ResetToken = NULL, Token Expiry = NULL WHERE EmailAddress = @Email";
+                command.Parameters.AddWithValue("@Email", emailAddress);
+
+                command.ExecuteNonQuery();
+            }
+        }
         
     
     }

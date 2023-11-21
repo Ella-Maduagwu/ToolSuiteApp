@@ -4,5 +4,14 @@
     <Compile Update="View\createaccountForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\ForgotPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\ResetPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

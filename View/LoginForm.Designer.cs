@@ -62,6 +62,7 @@
             ForgotPasswordBtn.TabIndex = 2;
             ForgotPasswordBtn.Text = "Forgot Password";
             ForgotPasswordBtn.UseVisualStyleBackColor = true;
+            ForgotPasswordBtn.Click += ForgotPasswordBtn_Click;
             // 
             // LoginButton
             // 
