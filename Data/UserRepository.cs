@@ -7,6 +7,8 @@ using MySql.Data.MySqlClient;
 using System.Configuration;
 using Microsoft.VisualBasic.ApplicationServices;
 using toolsuiteapp.View;
+using System.Numerics;
+using toolsuiteapp.Model;
 
 namespace toolsuiteapp.Data
 {
@@ -26,11 +28,11 @@ namespace toolsuiteapp.Data
 
                 var command = connection.CreateCommand();
                 command.CommandText = "INSERT INTO users (FirstName, LastName, EmailAddress, PasswordHash, Salt) VALUES (@firstName, @lastName, @emailAddress, @passwordHash, @salt)";
-         
+
                 command.Parameters.AddWithValue("@FirstName", user.firstName);
                 command.Parameters.AddWithValue("@LastName", user.lastName);
                 command.Parameters.AddWithValue("@EmailAddress", user.email);
-                    command.Parameters.AddWithValue("@PasswordHash", user.passwordHash);
+                command.Parameters.AddWithValue("@PasswordHash", user.passwordHash);
                 command.Parameters.AddWithValue("@Salt", user.passwordSalt);
                 command.ExecuteNonQuery();
             }
@@ -52,14 +54,15 @@ namespace toolsuiteapp.Data
 
             }
         }
-       
-        
+
+
 
         public (string passwordHash, string Salt) GetUserPasswordInfo(string emailAddress1)
         {
-                using (var connection = new MySqlConnection(_connectionString))
+            using (var connection = new MySqlConnection(_connectionString))
+            {
+                try
                 {
-                try { 
                     connection.Open();
 
                     string query = "SELECT passwordHash, salt FROM users WHERE emailaddress = @Email";
@@ -84,22 +87,22 @@ namespace toolsuiteapp.Data
                     // maybe put the logger here 
                 }
                 return (null, null);
-            } 
-            
+            }
+
 
         }
 
 
         public void StorePasswordResetToken(string userEmail, string resetToken, DateTime tokenExpiry)
         {
-            using ( var connection = new MySqlConnection(_connectionString))
+            using (var connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
                 var command = connection.CreateCommand();
                 command.CommandText = "UPDATE users SET ResetToken = @resetToken, TokenExpiry = @tokenExpiry WHERE EmailAddress = @userEmail";
 
-                command.Parameters.AddWithValue ("@resetToken", resetToken);
+                command.Parameters.AddWithValue("@resetToken", resetToken);
                 command.Parameters.AddWithValue("@tokenExpiry", tokenExpiry);
                 command.Parameters.AddWithValue("@userEmail", userEmail);// check what the email coloumn is named as 
 
@@ -115,7 +118,7 @@ namespace toolsuiteapp.Data
                 connection.Open();
 
                 string query = "SELECT ResetToken, TokenExpiry FROM users WHERE EmailAddress = @email";// this line is to prevent Injection attacks 
-                using ( var command = new MySqlCommand(query, connection))
+                using (var command = new MySqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@email", emailAddress);
                     using (var reader = command.ExecuteReader())
@@ -134,10 +137,10 @@ namespace toolsuiteapp.Data
 
             return (null, null);
         }
-       
-        public void UpdateUserPassword(string emailAddress, string newHashedPassword,string newSalt)
+
+        public void UpdateUserPassword(string emailAddress, string newHashedPassword, string newSalt)
         {
-            using (var connection =new MySqlConnection(_connectionString))
+            using (var connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -166,7 +169,58 @@ namespace toolsuiteapp.Data
                 command.ExecuteNonQuery();
             }
         }
-        
-    
+        public List<Vendor> GetVendors()
+        {
+            List<Vendor> vendors = new List<Vendor>();
+
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT VendorName, CategoryName FROM vendors"; // Adjust the columns based on your actual table structure
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        vendors.Add(new Vendor
+                        {
+                            VendorName = reader["VendorName"] as string,
+                            CategoryName = reader["CategoryName"] as string,
+                            // Add other properties as needed
+                        });
+                    }
+                }
+            }
+
+            return vendors;
+        }
+
+        public List<Category> GetCategories()
+        {
+            List<Category> categories = new List<Category>();
+
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT CategoryName FROM categories"; // Adjust the columns based on your actual table structure
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        categories.Add(new Category
+                        {
+                            CategoryName = reader["CategoryName"] as string,
+                            // Add other properties as needed
+                        });
+                    }
+                }
+            }
+
+            return categories;
+        }
+
     }
 }

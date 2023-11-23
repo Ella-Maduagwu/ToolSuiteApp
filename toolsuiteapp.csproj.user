@@ -1,16 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="View\AccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="View\createaccountForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="View\ForgotPasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\listofVendors.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\NotificationsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="View\ResetPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\SoftwaresForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\StaffForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\VendorsForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
