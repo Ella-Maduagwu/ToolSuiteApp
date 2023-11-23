@@ -59,21 +59,20 @@ namespace toolsuiteapp.View
             List<Vendor> vendors = userRepository.GetVendors();
             List<Category> categories = userRepository.GetCategories();
 
-            // Set up columns for the vendors DataGridView
+            
             dataGridViewVendors.AutoGenerateColumns = false;
             dataGridViewVendors.DataSource = vendors;
 
             DataGridViewTextBoxColumn vendorColumn = new DataGridViewTextBoxColumn();
-            vendorColumn.DataPropertyName = "VendorName"; // Replace with the actual property name in your Vendor class
+            vendorColumn.DataPropertyName = "VendorName"; 
             vendorColumn.HeaderText = "Vendor";
             dataGridViewVendors.Columns.Add(vendorColumn);
 
-            // Set up columns for the categories DataGridView
             dataGridViewCategories.AutoGenerateColumns = false;
             dataGridViewCategories.DataSource = categories;
 
             DataGridViewTextBoxColumn categoryColumn = new DataGridViewTextBoxColumn();
-            categoryColumn.DataPropertyName = "CategoryName"; // Replace with the actual property name in your Category class
+            categoryColumn.DataPropertyName = "CategoryName"; 
             categoryColumn.HeaderText = "Category";
             dataGridViewCategories.Columns.Add(categoryColumn);
 

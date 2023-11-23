@@ -177,7 +177,7 @@ namespace toolsuiteapp.Data
             {
                 connection.Open();
 
-                string query = "SELECT VendorName, CategoryName FROM vendors"; // Adjust the columns based on your actual table structure
+                string query = "SELECT VendorName, CategoryName FROM vendors"; 
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
@@ -187,7 +187,7 @@ namespace toolsuiteapp.Data
                         {
                             VendorName = reader["VendorName"] as string,
                             CategoryName = reader["CategoryName"] as string,
-                            // Add other properties as needed
+                            
                         });
                     }
                 }
@@ -204,7 +204,7 @@ namespace toolsuiteapp.Data
             {
                 connection.Open();
 
-                string query = "SELECT CategoryName FROM categories"; // Adjust the columns based on your actual table structure
+                string query = "SELECT CategoryName FROM categories"; 
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
@@ -213,7 +213,7 @@ namespace toolsuiteapp.Data
                         categories.Add(new Category
                         {
                             CategoryName = reader["CategoryName"] as string,
-                            // Add other properties as needed
+                            
                         });
                     }
                 }
