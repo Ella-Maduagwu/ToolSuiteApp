@@ -124,9 +124,9 @@
             // 
             // createAccountBttn
             // 
-            createAccountBttn.Location = new Point(328, 341);
+            createAccountBttn.Location = new Point(291, 341);
             createAccountBttn.Name = "createAccountBttn";
-            createAccountBttn.Size = new Size(121, 43);
+            createAccountBttn.Size = new Size(158, 43);
             createAccountBttn.TabIndex = 10;
             createAccountBttn.Text = "Create Account";
             createAccountBttn.UseVisualStyleBackColor = true;

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             EmailTxtBox = new TextBox();
-            SendEmailBtn = new Button();
             EmailLabel = new Label();
             loginButton = new Button();
             nextButton = new Button();
+            submitButton = new Button();
             SuspendLayout();
             // 
             // EmailTxtBox
@@ -41,16 +41,6 @@
             EmailTxtBox.Name = "EmailTxtBox";
             EmailTxtBox.Size = new Size(150, 31);
             EmailTxtBox.TabIndex = 1;
-            // 
-            // SendEmailBtn
-            // 
-            SendEmailBtn.Location = new Point(221, 236);
-            SendEmailBtn.Name = "SendEmailBtn";
-            SendEmailBtn.Size = new Size(144, 34);
-            SendEmailBtn.TabIndex = 2;
-            SendEmailBtn.Text = "submit";
-            SendEmailBtn.UseVisualStyleBackColor = true;
-            SendEmailBtn.Click += SendEmailBtn_Click;
             // 
             // EmailLabel
             // 
@@ -81,15 +71,25 @@
             nextButton.UseVisualStyleBackColor = true;
             nextButton.Click += nextButton_Click;
             // 
+            // submitButton
+            // 
+            submitButton.Location = new Point(249, 236);
+            submitButton.Name = "submitButton";
+            submitButton.Size = new Size(112, 34);
+            submitButton.TabIndex = 6;
+            submitButton.Text = "Submit";
+            submitButton.UseVisualStyleBackColor = true;
+            submitButton.Click += submitButton_Click;
+            // 
             // ForgotPasswordForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(submitButton);
             Controls.Add(nextButton);
             Controls.Add(loginButton);
             Controls.Add(EmailLabel);
-            Controls.Add(SendEmailBtn);
             Controls.Add(EmailTxtBox);
             Name = "ForgotPasswordForm";
             Text = "ForgotPasswordForm";
@@ -99,9 +99,9 @@
 
         #endregion
         private TextBox EmailTxtBox;
-        private Button SendEmailBtn;
         private Label EmailLabel;
         private Button loginButton;
         private Button nextButton;
+        private Button submitButton;
     }
 }

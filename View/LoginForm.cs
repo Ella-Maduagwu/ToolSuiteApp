@@ -35,15 +35,15 @@ namespace toolsuiteapp.View
             //call the validation method
             List<string> errorValidations = loginValidators.detailsValidation();
             string emailPattern = @"^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]+$";
-            Regex regex = new Regex(emailPattern);
-
+            Regex regex = new Regex(emailPattern);// valiadtions
+            var userRepo = new UserRepository();
+            var (storedHash, storedSalt, userRole) = userRepo.GetUserPasswordInfo(emailAddress1);// this method returns the hashed password and salt stored in the db for the email entered 
             if (errorValidations.Count == 0 && regex.IsMatch(emailTextBox.Text))
             {
                 //TO-DO: retrieve the salt and hashed password for the given email from the database
                 // hash the password input by the user with this retrieved salt 
                 // Compare the resulting hash with the stored hash to verify the password 
-                var userRepo = new UserRepository();
-                var (storedHash, storedSalt) = userRepo.GetUserPasswordInfo(emailAddress1);// this method returns the hashed password and salt stored in the db for the email entered 
+               
                 if (!string.IsNullOrEmpty(storedHash) && !string.IsNullOrEmpty(storedSalt))
                 {
 
@@ -54,7 +54,7 @@ namespace toolsuiteapp.View
 
                     if (hashedPassword == storedHash)
                     {
-                        grantAccess();
+                        grantAccess(userRole);
                     }
                     else
                     {
@@ -74,15 +74,36 @@ namespace toolsuiteapp.View
 
 
         }
-
-        public void grantAccess()
+        //TO-DO: ensure to include a userrole column in the DB
+        // 2. handle exception, it is a must
+        // 3. Include a logger
+        public void grantAccess(string role)
         {
-            // open homepage here 
+            if(role == "admin")
+            {
+                AdminDashboardForm adminDashboard = new AdminDashboardForm();
+                adminDashboard.ShowDialog();
+                this.Close();
+            }
+            else if (role == "user")
+            {
+                HomePageForm homePageForm = new HomePageForm();
+                homePageForm.ShowDialog();
+                this.Close();
+
+            }
+            else
+            {
+                MessageBox.Show(Text, "error");
+                // implement logger 
+            }
         }
 
         private void ForgotPasswordBtn_Click(object sender, EventArgs e)
         {
-
+            ForgotPasswordForm form = new ForgotPasswordForm();
+            form.ShowDialog();
+            this.Close();
         }
     }
 }

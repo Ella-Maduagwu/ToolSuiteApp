@@ -38,11 +38,11 @@ namespace toolsuiteapp.View
             {
 
                 controller.ResetPassword(emailAddy, newPassword, tokenInput);
-                MessageBox.Show(Text,"Your password has been successfully changed, please proceed to login");
-               LoginForm loginForm = new LoginForm();
+                MessageBox.Show(Text, "Your password has been successfully changed, please proceed to login");
+                LoginForm loginForm = new LoginForm();
                 loginForm.ShowDialog();
                 this.Close();
-            } 
+            }
 
             else
             {

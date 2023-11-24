@@ -55,7 +55,7 @@ namespace toolsuiteapp.Data
        
         
 
-        public (string passwordHash, string Salt) GetUserPasswordInfo(string emailAddress1)
+        public (string passwordHash, string Salt, string role) GetUserPasswordInfo(string emailAddress1)
         {
                 using (var connection = new MySqlConnection(_connectionString))
                 {
@@ -73,7 +73,8 @@ namespace toolsuiteapp.Data
                             {
                                 string PasswordHash = reader["passwordHash"] as string;
                                 string Salt = reader["salt"] as string;
-                                return (PasswordHash, Salt);
+                                string role = reader["role"] as string;
+                                return (PasswordHash, Salt, role);
                             }
                         }
 

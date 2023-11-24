@@ -5,13 +5,22 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using toolsuiteapp.Data;
 using toolsuiteapp.Model;
 using toolsuiteapp.View;
 
 namespace toolsuiteapp.Controller
 {
+  
     public class LoginValidators
     {
+        private UserRepository _userRepository;
+
+        public LoginValidators()
+        {
+            _userRepository = new UserRepository();
+        }
+
         public string Email { get; set; }
         public string Password { get; set; }
         public List<string> detailsValidation()
@@ -31,8 +40,8 @@ namespace toolsuiteapp.Controller
 
             return errorsForLogin;
         }
-  
-        //hash andsalt the password the user provided 
+
+        UserAccount loggedInUser = _userRepository.GetUserbyEmail(email);
        
     }
 }

@@ -162,6 +162,24 @@
           }
         }
       },
+      "PdfiumViewer/2.13.0": {
+        "type": "package",
+        "compile": {
+          "lib/net20/PdfiumViewer.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net20/PdfiumViewer.dll": {
+            "related": ".xml"
+          }
+        },
+        "resource": {
+          "lib/net20/nl/PdfiumViewer.resources.dll": {
+            "locale": "nl"
+          }
+        }
+      },
       "System.Buffers/4.5.1": {
         "type": "package",
         "compile": {
@@ -742,6 +760,22 @@
         "runtimes/win-x64/native/k5sprt64.dll",
         "runtimes/win-x64/native/krb5_64.dll",
         "runtimes/win-x64/native/krbcc64.dll"
+      ]
+    },
+    "PdfiumViewer/2.13.0": {
+      "sha512": "Nw4owBmJzDVXoMRjCnqPbET07CPOawwhcNjt+PyRaSxONN9bsFF+cm9kcMsDLEAEaxsiDJo5jls8bCQjvjidkA==",
+      "type": "package",
+      "path": "pdfiumviewer/2.13.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Tools/Install.ps1",
+        "lib/net20/PdfiumViewer.dll",
+        "lib/net20/PdfiumViewer.xml",
+        "lib/net20/nl/PdfiumViewer.resources.dll",
+        "pdfiumviewer.2.13.0.nupkg.sha512",
+        "pdfiumviewer.nuspec"
       ]
     },
     "System.Buffers/4.5.1": {
@@ -1788,7 +1822,8 @@
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "MySql.Data >= 8.2.0"
+      "MySql.Data >= 8.2.0",
+      "PdfiumViewer >= 2.13.0"
     ]
   },
   "packageFolders": {
@@ -1839,6 +1874,10 @@
           "MySql.Data": {
             "target": "Package",
             "version": "[8.2.0, )"
+          },
+          "PdfiumViewer": {
+            "target": "Package",
+            "version": "[2.13.0, )"
           }
         },
         "imports": [
@@ -1863,5 +1902,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'PdfiumViewer 2.13.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "PdfiumViewer",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    }
+  ]
 }

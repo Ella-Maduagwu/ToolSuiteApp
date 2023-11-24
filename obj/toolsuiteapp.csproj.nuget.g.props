@@ -13,4 +13,7 @@
     <SourceRoot Include="C:\Users\Ella Maduagwu\.nuget\packages\" />
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgPdfiumViewer Condition=" '$(PkgPdfiumViewer)' == '' ">C:\Users\Ella Maduagwu\.nuget\packages\pdfiumviewer\2.13.0</PkgPdfiumViewer>
+  </PropertyGroup>
 </Project>

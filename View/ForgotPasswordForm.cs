@@ -21,7 +21,7 @@ namespace toolsuiteapp.View
             InitializeComponent();
         }
 
-        private void SendEmailBtn_Click(object sender, EventArgs e)
+        private void submitButton_Click(object sender, EventArgs e)
         {
             nextButton.Enabled = false;
             string emailPattern = @"^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]+$";
@@ -35,6 +35,10 @@ namespace toolsuiteapp.View
 
                 MessageBox.Show("if your email is registered, you will recieve a password reset token.", "password Reset");
                 nextButton.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show(Text,"please a valid email adress");
             }
         }
 
@@ -51,5 +55,7 @@ namespace toolsuiteapp.View
             resetForm.ShowDialog();
             this.Close();
         }
+
+      
     }
 }
