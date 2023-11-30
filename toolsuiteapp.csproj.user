@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="View\createaccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\ForgotPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\HomepageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\ResetPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\SoftwareCategoriesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\SoftwareInfoBaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\WealthManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\WishlistForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
