@@ -7,6 +7,7 @@ using MySql.Data.MySqlClient;
 using System.Configuration;
 using Microsoft.VisualBasic.ApplicationServices;
 using toolsuiteapp.View;
+using toolsuiteapp.Model;
 
 namespace toolsuiteapp.Data
 {
@@ -25,13 +26,14 @@ namespace toolsuiteapp.Data
                 connection.Open();
 
                 var command = connection.CreateCommand();
-                command.CommandText = "INSERT INTO users (FirstName, LastName, EmailAddress, PasswordHash, Salt) VALUES (@firstName, @lastName, @emailAddress, @passwordHash, @salt)";
+                command.CommandText = "INSERT INTO users (firstname, lastname, emailaddress, passwordhash, salt, role) VALUES (@firstname, @lastname, @emailaddress, @passwordhash, @salt, @role)";
          
-                command.Parameters.AddWithValue("@FirstName", user.firstName);
-                command.Parameters.AddWithValue("@LastName", user.lastName);
-                command.Parameters.AddWithValue("@EmailAddress", user.email);
-                    command.Parameters.AddWithValue("@PasswordHash", user.passwordHash);
-                command.Parameters.AddWithValue("@Salt", user.passwordSalt);
+                command.Parameters.AddWithValue("@firstname", user.firstName);
+                command.Parameters.AddWithValue("@lastname", user.lastName);
+                command.Parameters.AddWithValue("@emailaddress", user.email);
+                    command.Parameters.AddWithValue("@passwordhash", user.passwordHash);
+                command.Parameters.AddWithValue("@salt", user.passwordSalt);
+                command.Parameters.AddWithValue("@role", user.role);
                 command.ExecuteNonQuery();
             }
         }
@@ -41,9 +43,9 @@ namespace toolsuiteapp.Data
             using (var connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
-                using (var command = new MySqlCommand("SELECT COUNT(1) FROM users WHERE Email = @Email", connection))
+                using (var command = new MySqlCommand("SELECT COUNT(1) FROM users WHERE email = @email", connection))
                 {
-                    command.Parameters.AddWithValue("@Email", emailAddress);// add email address as a parameter to SQL command 
+                    command.Parameters.AddWithValue("@email", emailAddress);// add email address as a parameter to SQL command 
                     // to protect against SQL injection attacks 
                     // ExecuteScalar returns the first column of the first row in the resut set
                     int userCount = Convert.ToInt32(command.ExecuteScalar());
@@ -55,41 +57,81 @@ namespace toolsuiteapp.Data
        
         
 
-        public (string passwordHash, string Salt, string role) GetUserPasswordInfo(string emailAddress1)
+        public (string passwordHash, string Salt) GetUserPasswordInfo(string emailAddress1)
         {
-                using (var connection = new MySqlConnection(_connectionString))
+            // Default values for the tuple elements
+            string defaultPasswordHash = string.Empty;
+            string defaultSalt = string.Empty;
+           
+
+            using (var connection = new MySqlConnection(_connectionString))
                 {
                 try { 
                     connection.Open();
 
-                    string query = "SELECT passwordHash, salt FROM users WHERE emailaddress = @Email";
+                    string query = "SELECT passwordhash, salt, role FROM users WHERE emailaddress = @email";
 
                     using (var command = new MySqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@Email", emailAddress1);
+                        command.Parameters.AddWithValue("@email", emailAddress1);
                         using (var reader = command.ExecuteReader())
                         {
                             if (reader.Read())
                             {
-                                string PasswordHash = reader["passwordHash"] as string;
-                                string Salt = reader["salt"] as string;
-                                string role = reader["role"] as string;
-                                return (PasswordHash, Salt, role);
+                                string PasswordHash = reader["passwordhash"]?.ToString() ?? defaultPasswordHash;
+                                string Salt = reader["salt"].ToString() ?? defaultSalt;
+                                return (PasswordHash, Salt);
                             }
                         }
 
                     }
                 }
-                catch
+                catch( Exception ex)
                 {
-                    // maybe put the logger here 
+                    Console.WriteLine( "Error retrieving password info from database");
                 }
-                return (null, null);
-            } 
-            
-
+               
+            }
+            return (defaultPasswordHash, defaultSalt);
         }
 
+
+        public (string firstName, string Role) GetUserRole(string emailAddress1)
+        {
+            string defaultName = string.Empty;
+            string defaultRole = "User";
+
+            using (var connection = new MySqlConnection(_connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string query = "SELECT passwordhash, salt, role FROM users WHERE emailaddress = @email";
+
+                    using (var command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@email", emailAddress1);
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string firstName = reader["firstname"].ToString() ?? defaultName;
+                                string Role = reader["role"].ToString() ?? defaultRole;
+                                return (firstName, Role);
+                            }
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error retrieving password info from database");
+                }
+
+            }
+            return (defaultName, defaultRole);
+        }
 
         public void StorePasswordResetToken(string userEmail, string resetToken, DateTime tokenExpiry)
         {
@@ -138,18 +180,16 @@ namespace toolsuiteapp.Data
        
         public void UpdateUserPassword(string emailAddress, string newHashedPassword,string newSalt)
         {
-            using (var connection =new MySqlConnection(_connectionString))
-            {
-                connection.Open();
+            using var connection = new MySqlConnection(_connectionString);
+            connection.Open();
 
-                var command = connection.CreateCommand();
-                command.CommandText = "UPDATE users SET PasswordHash = @PasswordHash,Salt = @Salt WHERE EmailAddress = @Email"; // check that the parameters align with the ones in the DB
-                command.Parameters.AddWithValue("@PasswordHash", newHashedPassword);
-                command.Parameters.AddWithValue("@Salt", newSalt);
-                command.Parameters.AddWithValue("@Email", emailAddress);
+            var command = connection.CreateCommand();
+            command.CommandText = "UPDATE users SET PasswordHash = @PasswordHash,Salt = @Salt WHERE EmailAddress = @Email"; // check that the parameters align with the ones in the DB
+            command.Parameters.AddWithValue("@PasswordHash", newHashedPassword);
+            command.Parameters.AddWithValue("@Salt", newSalt);
+            command.Parameters.AddWithValue("@Email", emailAddress);
 
-                command.ExecuteNonQuery();
-            }
+            command.ExecuteNonQuery();
 
             // add error handling and logger
         }
@@ -167,7 +207,26 @@ namespace toolsuiteapp.Data
                 command.ExecuteNonQuery();
             }
         }
-        
+        public List<SoftwareCategoriesModel> GetSoftwareCategories()
+        {
+            List<SoftwareCategoriesModel> categories = new List<SoftwareCategoriesModel>();
+            using var connection = new MySqlConnection(_connectionString);
+                connection.Open();
+            var command = connection.CreateCommand();
+
+
+            return categories;
+            }
+
+        public void AddCategory(SoftwareCategoriesModel category)
+        {
+
+        }
+
+        public void DeleteCategory(SoftwareCategoriesModel category)
+        {
+
+        }
     
     }
 }

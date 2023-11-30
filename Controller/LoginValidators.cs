@@ -41,7 +41,7 @@ namespace toolsuiteapp.Controller
             return errorsForLogin;
         }
 
-        UserAccount loggedInUser = _userRepository.GetUserbyEmail(email);
+       
        
     }
 }

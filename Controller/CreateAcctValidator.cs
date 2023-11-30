@@ -14,7 +14,7 @@ namespace toolsuiteapp.Controller
   public class CreateAcctValidator
     {
         
-        public List<string> acctValidators( string firstName, string lastName, string emailAddress, string password, string confirmPassword)
+        public List<string> acctValidators( string firstName, string lastName, string emailAddress, string password, string confirmPassword, string role)
         {
             
             List<string> errors = new List<string>();
@@ -47,6 +47,11 @@ namespace toolsuiteapp.Controller
             {
                 errors.Add("passwords do not match");
             }
+            if (string.IsNullOrEmpty(role))
+            {
+                errors.Add("Role is required ");
+            }
+          
 
             return errors;
         }

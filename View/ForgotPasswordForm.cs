@@ -23,11 +23,10 @@ namespace toolsuiteapp.View
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            nextButton.Enabled = false;
             string emailPattern = @"^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]+$";
             Regex regex = new Regex(emailPattern);
             string userEmail = EmailTxtBox.Text;
-            if (string.IsNullOrEmpty(EmailTxtBox.Text) && regex.IsMatch(EmailTxtBox.Text))
+            if (!string.IsNullOrEmpty(userEmail) && regex.IsMatch(userEmail))
             {
                 // call method to handle password reset request 
                 var passwordReset = new ForgotPasswordController();
@@ -38,7 +37,7 @@ namespace toolsuiteapp.View
             }
             else
             {
-                MessageBox.Show(Text,"please a valid email adress");
+                MessageBox.Show(Text, "please a valid email adress");
             }
         }
 
@@ -56,6 +55,6 @@ namespace toolsuiteapp.View
             this.Close();
         }
 
-      
+
     }
 }

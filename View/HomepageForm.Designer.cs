@@ -36,7 +36,7 @@
             profileButton = new Button();
             softwareButton = new Button();
             vendorButton = new Button();
-            button4 = new Button();
+            NotificationButton = new Button();
             panel1 = new Panel();
             assetManaLabel = new Label();
             coherentPicBox = new PictureBox();
@@ -65,17 +65,17 @@
             // searchTxtBox
             // 
             searchTxtBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            searchTxtBox.Location = new Point(359, 18);
+            searchTxtBox.Location = new Point(351, 18);
             searchTxtBox.Name = "searchTxtBox";
             searchTxtBox.Size = new Size(733, 31);
             searchTxtBox.TabIndex = 0;
             // 
             // searchButton
             // 
-            searchButton.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            searchButton.Location = new Point(1114, 18);
+            searchButton.Anchor = AnchorStyles.Right;
+            searchButton.Location = new Point(1106, 18);
             searchButton.Name = "searchButton";
-            searchButton.Size = new Size(174, 31);
+            searchButton.Size = new Size(174, 36);
             searchButton.TabIndex = 1;
             searchButton.Text = "search";
             searchButton.UseVisualStyleBackColor = true;
@@ -119,14 +119,14 @@
             vendorButton.Text = "Vendor";
             vendorButton.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // NotificationButton
             // 
-            button4.Location = new Point(2, 289);
-            button4.Name = "button4";
-            button4.Size = new Size(134, 38);
-            button4.TabIndex = 7;
-            button4.Text = "button4";
-            button4.UseVisualStyleBackColor = true;
+            NotificationButton.Location = new Point(2, 289);
+            NotificationButton.Name = "NotificationButton";
+            NotificationButton.Size = new Size(134, 38);
+            NotificationButton.TabIndex = 7;
+            NotificationButton.Text = "Notifications";
+            NotificationButton.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -144,9 +144,9 @@
             panel1.Controls.Add(adonisPicBox);
             panel1.Controls.Add(liminaPicBox);
             panel1.Controls.Add(addeparPicBox);
-            panel1.Location = new Point(148, 647);
+            panel1.Location = new Point(140, 437);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1187, 590);
+            panel1.Size = new Size(1187, 340);
             panel1.TabIndex = 8;
             panel1.Click += panel1_Click;
             // 
@@ -289,9 +289,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(1507, 1332);
+            ClientSize = new Size(1499, 961);
             Controls.Add(panel1);
-            Controls.Add(button4);
+            Controls.Add(NotificationButton);
             Controls.Add(vendorButton);
             Controls.Add(softwareButton);
             Controls.Add(profileButton);
@@ -323,7 +323,7 @@
         private Button profileButton;
         private Button softwareButton;
         private Button vendorButton;
-        private Button button4;
+        private Button NotificationButton;
         private Panel panel1;
         private Label wealthMLabel;
         private PictureBox watsonPicBox;

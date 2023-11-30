@@ -34,6 +34,7 @@
             LoginButton = new Button();
             emailTextBox = new TextBox();
             PasswordTextBox = new TextBox();
+            CreateAccountButton = new Button();
             SuspendLayout();
             // 
             // emailLabel
@@ -88,11 +89,23 @@
             PasswordTextBox.Size = new Size(288, 31);
             PasswordTextBox.TabIndex = 5;
             // 
+            // CreateAccountButton
+            // 
+            CreateAccountButton.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            CreateAccountButton.Location = new Point(27, 34);
+            CreateAccountButton.Name = "CreateAccountButton";
+            CreateAccountButton.Size = new Size(137, 34);
+            CreateAccountButton.TabIndex = 6;
+            CreateAccountButton.Text = "Create Account ";
+            CreateAccountButton.UseVisualStyleBackColor = true;
+            CreateAccountButton.Click += CreateAccountButton_Click;
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(CreateAccountButton);
             Controls.Add(PasswordTextBox);
             Controls.Add(emailTextBox);
             Controls.Add(LoginButton);
@@ -101,6 +114,7 @@
             Controls.Add(emailLabel);
             Name = "LoginForm";
             Text = "LoginForm";
+            Load += LoginForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -113,5 +127,6 @@
         private Button LoginButton;
         private TextBox emailTextBox;
         private TextBox PasswordTextBox;
+        private Button CreateAccountButton;
     }
 }

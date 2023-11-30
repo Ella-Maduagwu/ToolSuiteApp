@@ -15,7 +15,7 @@ namespace toolsuiteapp.Controller
 
         public void PerformSearch(string search)
         {
-
+            // perform the search logic, create an object of the model class
         }
     }
 }

@@ -35,11 +35,9 @@
             process1 = new System.Diagnostics.Process();
             changesCheckBox = new CheckBox();
             addeparDescription = new Label();
-            editLabel = new Label();
             liminiPicBox = new PictureBox();
             liminaDescription = new Label();
             LaminaWishCheckBox = new CheckBox();
-            laminaEditLabel = new Label();
             nextButton = new Button();
             backButton = new Button();
             ((System.ComponentModel.ISupportInitialize)addeparPic).BeginInit();
@@ -64,6 +62,7 @@
             addeparPic.SizeMode = PictureBoxSizeMode.StretchImage;
             addeparPic.TabIndex = 1;
             addeparPic.TabStop = false;
+            addeparPic.Click += addeparPic_Click;
             // 
             // wealthManagementLabl
             // 
@@ -95,6 +94,7 @@
             changesCheckBox.TabIndex = 4;
             changesCheckBox.Text = "Add to Wishlist ";
             changesCheckBox.UseVisualStyleBackColor = true;
+            changesCheckBox.CheckedChanged += changesCheckBox_CheckedChanged;
             // 
             // addeparDescription
             // 
@@ -107,17 +107,6 @@
             addeparDescription.Size = new Size(444, 42);
             addeparDescription.TabIndex = 5;
             addeparDescription.Text = "Addepar empowers investment professionals across the globe \r\nwith data,insights and cutting-edge technology";
-            // 
-            // editLabel
-            // 
-            editLabel.AutoSize = true;
-            editLabel.ForeColor = SystemColors.Highlight;
-            editLabel.Location = new Point(782, 439);
-            editLabel.Name = "editLabel";
-            editLabel.Size = new Size(42, 25);
-            editLabel.TabIndex = 6;
-            editLabel.Text = "Edit";
-            editLabel.Click += editLabel_Click;
             // 
             // liminiPicBox
             // 
@@ -147,16 +136,6 @@
             LaminaWishCheckBox.TabIndex = 9;
             LaminaWishCheckBox.Text = "Add to Wishlist";
             LaminaWishCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // laminaEditLabel
-            // 
-            laminaEditLabel.AutoSize = true;
-            laminaEditLabel.ForeColor = SystemColors.MenuHighlight;
-            laminaEditLabel.Location = new Point(811, 924);
-            laminaEditLabel.Name = "laminaEditLabel";
-            laminaEditLabel.Size = new Size(42, 25);
-            laminaEditLabel.TabIndex = 10;
-            laminaEditLabel.Text = "Edit";
             // 
             // nextButton
             // 
@@ -188,11 +167,9 @@
             ClientSize = new Size(1623, 1410);
             Controls.Add(backButton);
             Controls.Add(nextButton);
-            Controls.Add(laminaEditLabel);
             Controls.Add(LaminaWishCheckBox);
             Controls.Add(liminaDescription);
             Controls.Add(liminiPicBox);
-            Controls.Add(editLabel);
             Controls.Add(addeparDescription);
             Controls.Add(changesCheckBox);
             Controls.Add(wealthManagementLabl);
@@ -214,10 +191,8 @@
         private System.Diagnostics.Process process1;
         private CheckBox changesCheckBox;
         private Label addeparDescription;
-        private Label editLabel;
         private PictureBox liminiPicBox;
         private Label liminaDescription;
-        private Label laminaEditLabel;
         private CheckBox LaminaWishCheckBox;
         private Button backButton;
         private Button nextButton;

@@ -63,6 +63,7 @@
             // 
             // nextButton
             // 
+            nextButton.Enabled = false;
             nextButton.Location = new Point(422, 236);
             nextButton.Name = "nextButton";
             nextButton.Size = new Size(112, 34);

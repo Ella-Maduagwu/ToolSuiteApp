@@ -32,7 +32,9 @@ namespace toolsuiteapp.View
 
         private void wealthMLabel_Click(object sender, EventArgs e)
         {
-            // open the form that contains the apps under wealth management 
+            WealthMAnagementForm wealth = new WealthMAnagementForm();
+            wealth.ShowDialog();
+            this.Close();
         }
         private void BusinessManagLabel_Click(object sender, EventArgs e)
         {
@@ -94,7 +96,10 @@ namespace toolsuiteapp.View
 
         private void addeparPictBox_Click(object sender, EventArgs e)
         {
-
+            AddeparInfoPage addepar = new AddeparInfoPage();
+            this.Hide();
+            addepar.ShowDialog();
+            this.Close();
         }
 
         private void investmentBanLabel_Click(object sender, EventArgs e)
@@ -111,7 +116,9 @@ namespace toolsuiteapp.View
         private void softwareButton_Click(object sender, EventArgs e)
         {
             // open the Software Categories form here 
-            // 
+            SoftwareCategoriesForm softwareCategories = new SoftwareCategoriesForm();
+            softwareCategories.ShowDialog();
+            this.Close();
         }
     }
 }

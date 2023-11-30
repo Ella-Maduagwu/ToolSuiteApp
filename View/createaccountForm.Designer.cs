@@ -40,12 +40,15 @@
             confirmPasswordTxt = new TextBox();
             createAccountBttn = new Button();
             LoginButton = new Button();
+            roleLabel = new Label();
+            adminRoleBtn = new RadioButton();
+            userRoleBtn = new RadioButton();
             SuspendLayout();
             // 
             // firstnameLabel
             // 
             firstnameLabel.AutoSize = true;
-            firstnameLabel.Location = new Point(203, 81);
+            firstnameLabel.Location = new Point(193, 44);
             firstnameLabel.Name = "firstnameLabel";
             firstnameLabel.Size = new Size(97, 25);
             firstnameLabel.TabIndex = 0;
@@ -53,7 +56,7 @@
             // 
             // firstNameTextBox
             // 
-            firstNameTextBox.Location = new Point(406, 75);
+            firstNameTextBox.Location = new Point(358, 38);
             firstNameTextBox.Name = "firstNameTextBox";
             firstNameTextBox.Size = new Size(150, 31);
             firstNameTextBox.TabIndex = 1;
@@ -61,7 +64,7 @@
             // lastnameLabel
             // 
             lastnameLabel.AutoSize = true;
-            lastnameLabel.Location = new Point(203, 127);
+            lastnameLabel.Location = new Point(193, 84);
             lastnameLabel.Name = "lastnameLabel";
             lastnameLabel.Size = new Size(95, 25);
             lastnameLabel.TabIndex = 2;
@@ -70,7 +73,7 @@
             // emailLabel
             // 
             emailLabel.AutoSize = true;
-            emailLabel.Location = new Point(203, 173);
+            emailLabel.Location = new Point(193, 126);
             emailLabel.Name = "emailLabel";
             emailLabel.Size = new Size(59, 25);
             emailLabel.TabIndex = 3;
@@ -79,7 +82,7 @@
             // passwordlabel
             // 
             passwordlabel.AutoSize = true;
-            passwordlabel.Location = new Point(203, 221);
+            passwordlabel.Location = new Point(193, 166);
             passwordlabel.Name = "passwordlabel";
             passwordlabel.Size = new Size(87, 25);
             passwordlabel.TabIndex = 4;
@@ -88,7 +91,7 @@
             // confirmpasswordLabel
             // 
             confirmpasswordLabel.AutoSize = true;
-            confirmpasswordLabel.Location = new Point(203, 263);
+            confirmpasswordLabel.Location = new Point(193, 209);
             confirmpasswordLabel.Name = "confirmpasswordLabel";
             confirmpasswordLabel.Size = new Size(156, 25);
             confirmpasswordLabel.TabIndex = 5;
@@ -96,35 +99,35 @@
             // 
             // lastnameText
             // 
-            lastnameText.Location = new Point(406, 127);
+            lastnameText.Location = new Point(358, 80);
             lastnameText.Name = "lastnameText";
             lastnameText.Size = new Size(150, 31);
             lastnameText.TabIndex = 6;
             // 
             // emailTextBox
             // 
-            emailTextBox.Location = new Point(406, 173);
+            emailTextBox.Location = new Point(358, 123);
             emailTextBox.Name = "emailTextBox";
             emailTextBox.Size = new Size(150, 31);
             emailTextBox.TabIndex = 7;
             // 
             // passwordTextBox
             // 
-            passwordTextBox.Location = new Point(406, 221);
+            passwordTextBox.Location = new Point(358, 166);
             passwordTextBox.Name = "passwordTextBox";
             passwordTextBox.Size = new Size(150, 31);
             passwordTextBox.TabIndex = 8;
             // 
             // confirmPasswordTxt
             // 
-            confirmPasswordTxt.Location = new Point(406, 263);
+            confirmPasswordTxt.Location = new Point(358, 209);
             confirmPasswordTxt.Name = "confirmPasswordTxt";
             confirmPasswordTxt.Size = new Size(150, 31);
             confirmPasswordTxt.TabIndex = 9;
             // 
             // createAccountBttn
             // 
-            createAccountBttn.Location = new Point(291, 341);
+            createAccountBttn.Location = new Point(619, 382);
             createAccountBttn.Name = "createAccountBttn";
             createAccountBttn.Size = new Size(158, 43);
             createAccountBttn.TabIndex = 10;
@@ -134,7 +137,7 @@
             // 
             // LoginButton
             // 
-            LoginButton.Location = new Point(486, 345);
+            LoginButton.Location = new Point(653, 21);
             LoginButton.Name = "LoginButton";
             LoginButton.Size = new Size(112, 34);
             LoginButton.TabIndex = 11;
@@ -142,11 +145,45 @@
             LoginButton.UseVisualStyleBackColor = true;
             LoginButton.Click += LoginButton_Click;
             // 
+            // roleLabel
+            // 
+            roleLabel.AutoSize = true;
+            roleLabel.Location = new Point(78, 289);
+            roleLabel.Name = "roleLabel";
+            roleLabel.Size = new Size(104, 25);
+            roleLabel.TabIndex = 12;
+            roleLabel.Text = "Assign Role";
+            // 
+            // adminRoleBtn
+            // 
+            adminRoleBtn.AutoSize = true;
+            adminRoleBtn.Location = new Point(98, 347);
+            adminRoleBtn.Name = "adminRoleBtn";
+            adminRoleBtn.Size = new Size(90, 29);
+            adminRoleBtn.TabIndex = 13;
+            adminRoleBtn.TabStop = true;
+            adminRoleBtn.Text = "Admin";
+            adminRoleBtn.UseVisualStyleBackColor = true;
+            // 
+            // userRoleBtn
+            // 
+            userRoleBtn.AutoSize = true;
+            userRoleBtn.Location = new Point(267, 347);
+            userRoleBtn.Name = "userRoleBtn";
+            userRoleBtn.Size = new Size(72, 29);
+            userRoleBtn.TabIndex = 14;
+            userRoleBtn.TabStop = true;
+            userRoleBtn.Text = "User";
+            userRoleBtn.UseVisualStyleBackColor = true;
+            // 
             // createaccountForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(userRoleBtn);
+            Controls.Add(adminRoleBtn);
+            Controls.Add(roleLabel);
             Controls.Add(LoginButton);
             Controls.Add(createAccountBttn);
             Controls.Add(confirmPasswordTxt);
@@ -179,5 +216,8 @@
         private TextBox confirmPasswordTxt;
         private Button createAccountBttn;
         private Button LoginButton;
+        private Label roleLabel;
+        private RadioButton adminRoleBtn;
+        private RadioButton userRoleBtn;
     }
 }

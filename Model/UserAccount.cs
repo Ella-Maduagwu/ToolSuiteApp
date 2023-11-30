@@ -16,5 +16,6 @@ namespace toolsuiteapp.Model
         public string passWord { get; set; }
         public string passwordHash { get; set; } 
         public string passwordSalt { get; set; } 
+        public string role { get; set; }
     }
 }
