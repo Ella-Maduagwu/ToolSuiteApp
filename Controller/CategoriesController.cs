@@ -25,15 +25,22 @@ namespace toolsuiteapp.Controller
         public void LoadCategories()
         {
             var categories = userRepository.GetSoftwareCategories();
-            // Pass the categories to the view to display in the DataGridView
-            // Convert the list to a BindingList for data binding purposes
-            view.SetDataSource(new BindingList<SoftwareCategoriesModel>(categories));// allows DataGridView to automatically update whenever the underlyin data changes
+           
         }
 
         public void SaveCategories(SoftwareCategoriesModel category)
         {
-            userRepository.AddCategory(category);
-            LoadCategories();// refresh the list 
+            if (category.Id > 0)
+            {
+                userRepository.UpdateCategory(category);// updates a
+            }
+            else
+            {
+                userRepository.AddCategory(category);// adds new category to the db
+               
+            }
+            LoadCategories();// refresh the list
+
         }
 
         public void DeleteCategory(SoftwareCategoriesModel category)

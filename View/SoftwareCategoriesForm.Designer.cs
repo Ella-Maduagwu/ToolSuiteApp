@@ -28,35 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridViewSoftwareCategories = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewSoftwareCategories).BeginInit();
+            LogoButton = new Button();
+            AddBtn = new Button();
             SuspendLayout();
             // 
-            // dataGridViewSoftwareCategories
+            // LogoButton
             // 
-            dataGridViewSoftwareCategories.AllowUserToOrderColumns = true;
-            dataGridViewSoftwareCategories.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewSoftwareCategories.Location = new Point(139, 115);
-            dataGridViewSoftwareCategories.Name = "dataGridViewSoftwareCategories";
-            dataGridViewSoftwareCategories.RowHeadersWidth = 62;
-            dataGridViewSoftwareCategories.RowTemplate.Height = 33;
-            dataGridViewSoftwareCategories.Size = new Size(552, 640);
-            dataGridViewSoftwareCategories.TabIndex = 0;
+            LogoButton.Font = new Font("Forte", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            LogoButton.Location = new Point(139, 55);
+            LogoButton.Name = "LogoButton";
+            LogoButton.Size = new Size(98, 40);
+            LogoButton.TabIndex = 2;
+            LogoButton.Text = "Citisoft";
+            LogoButton.UseVisualStyleBackColor = true;
+            LogoButton.Click += LogoButton_Click;
+            // 
+            // AddBtn
+            // 
+            AddBtn.Location = new Point(978, 55);
+            AddBtn.Name = "AddBtn";
+            AddBtn.Size = new Size(79, 40);
+            AddBtn.TabIndex = 3;
+            AddBtn.Text = "Add +";
+            AddBtn.UseVisualStyleBackColor = true;
+            AddBtn.Click += AddBtn_Click;
             // 
             // SoftwareCategoriesForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1622, 1413);
-            Controls.Add(dataGridViewSoftwareCategories);
+            ClientSize = new Size(1536, 1299);
+            Controls.Add(AddBtn);
+            Controls.Add(LogoButton);
             Name = "SoftwareCategoriesForm";
             Text = "SoftwareCategoriesForm";
-            ((System.ComponentModel.ISupportInitialize)dataGridViewSoftwareCategories).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private DataGridView dataGridViewSoftwareCategories;
+        private Button LogoButton;
+        private Button AddBtn;
     }
 }

@@ -20,24 +20,33 @@ namespace toolsuiteapp.Service
 
         public void SendPasswordResetEmail(string recipientEmail, string resetToken)
         {
-            using (var smtpClient = new SmtpClient(_smtpHost)
+            try
             {
-                Port = _smtpPort,
-                Credentials = new NetworkCredential(_fromAddress, _fromPassword),
-                EnableSsl = true,
-            })
-            {
-                var mailMessage = new MailMessage()
+                using (var smtpClient = new SmtpClient(_smtpHost)
                 {
-                    From = new MailAddress(_fromAddress),
-                    Subject = "Password Reset Request",
-                    Body = $"please enter this code in the Application: {resetToken}",
-                    IsBodyHtml = false,
+                    Port = _smtpPort,
+                    Credentials = new NetworkCredential(_fromAddress, _fromPassword),
+                    EnableSsl = true,
+                })
+                {
+                    var mailMessage = new MailMessage()
+                    {
+                        From = new MailAddress(_fromAddress),
+                        Subject = "Password Reset Request",
+                        Body = $"please enter this code in the Application: {resetToken}",
+                        IsBodyHtml = false,
 
-                };
-                mailMessage.To.Add(recipientEmail);
-                smtpClient.Send(mailMessage);
+                    };
+                    mailMessage.To.Add(recipientEmail);
+                    smtpClient.Send(mailMessage);
+                }
             }
+            catch(Exception ex)
+            {
+                Logger logger = new Logger();
+                logger.LogException(ex);
+            }
+           
     }
     }
   
