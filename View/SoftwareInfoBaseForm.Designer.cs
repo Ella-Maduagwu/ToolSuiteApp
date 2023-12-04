@@ -66,7 +66,7 @@
             pictureBox1.Size = new Size(253, 264);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += screenPicBox1_Click;
+            pictureBox1.Click += ScreenPicBox1_Click;
             // 
             // logoLabel
             // 
@@ -109,7 +109,7 @@
             websiteLabel.TabIndex = 4;
             websiteLabel.TabStop = true;
             websiteLabel.Text = "Visit Website ";
-            websiteLabel.LinkClicked += websiteLabel_LinkClicked;
+            websiteLabel.LinkClicked += WebsiteLabel_LinkClicked;
             // 
             // screenshotsPanel
             // 
@@ -136,7 +136,7 @@
             pictureBox10.Size = new Size(150, 151);
             pictureBox10.TabIndex = 8;
             pictureBox10.TabStop = false;
-            pictureBox10.Click += screenPicBox1_Click;
+            pictureBox10.Click += ScreenPicBox1_Click;
             // 
             // pictureBox9
             // 
@@ -145,7 +145,7 @@
             pictureBox9.Size = new Size(150, 151);
             pictureBox9.TabIndex = 7;
             pictureBox9.TabStop = false;
-            pictureBox9.Click += screenPicBox1_Click;
+            pictureBox9.Click += ScreenPicBox1_Click;
             // 
             // pictureBox8
             // 
@@ -154,7 +154,7 @@
             pictureBox8.Size = new Size(150, 151);
             pictureBox8.TabIndex = 6;
             pictureBox8.TabStop = false;
-            pictureBox8.Click += screenPicBox1_Click;
+            pictureBox8.Click += ScreenPicBox1_Click;
             // 
             // pictureBox7
             // 
@@ -163,7 +163,7 @@
             pictureBox7.Size = new Size(98, 151);
             pictureBox7.TabIndex = 5;
             pictureBox7.TabStop = false;
-            pictureBox7.Click += screenPicBox1_Click;
+            pictureBox7.Click += ScreenPicBox1_Click;
             // 
             // pictureBox6
             // 
@@ -172,7 +172,7 @@
             pictureBox6.Size = new Size(150, 151);
             pictureBox6.TabIndex = 4;
             pictureBox6.TabStop = false;
-            pictureBox6.Click += screenPicBox1_Click;
+            pictureBox6.Click += ScreenPicBox1_Click;
             // 
             // pictureBox5
             // 
@@ -181,7 +181,7 @@
             pictureBox5.Size = new Size(150, 151);
             pictureBox5.TabIndex = 3;
             pictureBox5.TabStop = false;
-            pictureBox5.Click += screenPicBox1_Click;
+            pictureBox5.Click += ScreenPicBox1_Click;
             // 
             // pictureBox4
             // 
@@ -190,7 +190,7 @@
             pictureBox4.Size = new Size(177, 151);
             pictureBox4.TabIndex = 2;
             pictureBox4.TabStop = false;
-            pictureBox4.Click += screenPicBox1_Click;
+            pictureBox4.Click += ScreenPicBox1_Click;
             // 
             // pictureBox3
             // 
@@ -199,7 +199,7 @@
             pictureBox3.Size = new Size(218, 151);
             pictureBox3.TabIndex = 1;
             pictureBox3.TabStop = false;
-            pictureBox3.Click += screenPicBox1_Click;
+            pictureBox3.Click += ScreenPicBox1_Click;
             // 
             // screenPicBox1
             // 
@@ -208,7 +208,7 @@
             screenPicBox1.Size = new Size(184, 151);
             screenPicBox1.TabIndex = 0;
             screenPicBox1.TabStop = false;
-            screenPicBox1.Click += screenPicBox1_Click;
+            screenPicBox1.Click += ScreenPicBox1_Click;
             // 
             // vendorInfoLabel
             // 

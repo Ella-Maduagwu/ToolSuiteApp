@@ -21,14 +21,14 @@ namespace toolsuiteapp.View
 
         }
 
-        private void EditButton_Click(object sender, EventArgs e)
+        public void EditButton_Click(object sender, EventArgs e)
         {
             editButtonClicked = true;
         }
 
-        public void screenPicBox1_Click(object sender, EventArgs e)
+        public void ScreenPicBox1_Click(object sender, EventArgs e)
         {
-            UserSession userSession = new UserSession();
+            UserSession userSession = new();
             string currentUser = userSession.GetRole();
 
             if (currentUser == "Admin")
@@ -37,7 +37,7 @@ namespace toolsuiteapp.View
 
                 if (editButtonClicked)
                 {
-                    OpenFileDialog ofd = new OpenFileDialog();
+                    OpenFileDialog ofd = new();
                     ofd.Filter = "JPEG file|*.jpeg;*.jpeg";
                     if (ofd.ShowDialog() == DialogResult.OK)// this will open the file dialogue to enable the user choose a photo 
                     {
@@ -54,7 +54,7 @@ namespace toolsuiteapp.View
 
         }
 
-        public void websiteLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        public void WebsiteLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             
         }
@@ -67,7 +67,7 @@ namespace toolsuiteapp.View
         {
             if (e.Button == MouseButtons.Right)// when the linklabel is rightclicked
             {
-                TextBox textbox = new TextBox();
+                TextBox textbox = new();
                 {// create a textbox at the same location as the linklabel and type your changes in it 
                     Size = websiteLabel.Size;
                     Location = websiteLabel.Location;

@@ -79,7 +79,7 @@
             searchButton.TabIndex = 1;
             searchButton.Text = "search";
             searchButton.UseVisualStyleBackColor = true;
-            searchButton.Click += searchButton_Click;
+            searchButton.Click += SearchButton_Click;
             // 
             // logoLabel
             // 
@@ -99,6 +99,7 @@
             profileButton.TabIndex = 4;
             profileButton.Text = "Profile";
             profileButton.UseVisualStyleBackColor = true;
+            profileButton.Click += profileButton_Click;
             // 
             // softwareButton
             // 
@@ -108,7 +109,7 @@
             softwareButton.TabIndex = 5;
             softwareButton.Text = "Software";
             softwareButton.UseVisualStyleBackColor = true;
-            softwareButton.Click += softwareButton_Click;
+            softwareButton.Click += SoftwareButton_Click;
             // 
             // vendorButton
             // 
@@ -118,6 +119,7 @@
             vendorButton.TabIndex = 6;
             vendorButton.Text = "Vendor";
             vendorButton.UseVisualStyleBackColor = true;
+            vendorButton.Click += vendorButton_Click;
             // 
             // NotificationButton
             // 
@@ -148,7 +150,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1187, 340);
             panel1.TabIndex = 8;
-            panel1.Click += panel1_Click;
+            panel1.Click += Panel1_Click;
             // 
             // assetManaLabel
             // 
@@ -158,7 +160,7 @@
             assetManaLabel.Size = new Size(192, 25);
             assetManaLabel.TabIndex = 15;
             assetManaLabel.Text = "Asset Management   >";
-            assetManaLabel.Click += assetManaLabel_Click;
+            assetManaLabel.Click += AssetManaLabel_Click;
             // 
             // coherentPicBox
             // 
@@ -169,7 +171,7 @@
             coherentPicBox.SizeMode = PictureBoxSizeMode.StretchImage;
             coherentPicBox.TabIndex = 14;
             coherentPicBox.TabStop = false;
-            coherentPicBox.Click += coherentPicBox_Click;
+            coherentPicBox.Click += CoherentPicBox_Click;
             // 
             // investmentBanLabel
             // 
@@ -179,7 +181,7 @@
             investmentBanLabel.Size = new Size(191, 25);
             investmentBanLabel.TabIndex = 13;
             investmentBanLabel.Text = "Investment banking  >";
-            investmentBanLabel.Click += investmentBanLabel_Click;
+            investmentBanLabel.Click += InvestmentBanLabel_Click;
             // 
             // finbournePicBox
             // 
@@ -189,7 +191,7 @@
             finbournePicBox.Size = new Size(214, 225);
             finbournePicBox.TabIndex = 12;
             finbournePicBox.TabStop = false;
-            finbournePicBox.Click += finbournePicBox_Click;
+            finbournePicBox.Click += FinbournePicBox_Click;
             // 
             // dataManagLabel
             // 
@@ -199,7 +201,7 @@
             dataManagLabel.Size = new Size(181, 25);
             dataManagLabel.TabIndex = 11;
             dataManagLabel.Text = "Data Management  >";
-            dataManagLabel.Click += dataManagLabel_Click;
+            dataManagLabel.Click += DataManagLabel_Click;
             // 
             // wealthMLabel
             // 
@@ -209,7 +211,7 @@
             wealthMLabel.Size = new Size(198, 25);
             wealthMLabel.TabIndex = 8;
             wealthMLabel.Text = "Wealth Management  >";
-            wealthMLabel.Click += wealthMLabel_Click;
+            wealthMLabel.Click += WealthMLabel_Click;
             // 
             // watsonPicBox
             // 
@@ -219,7 +221,7 @@
             watsonPicBox.Size = new Size(229, 194);
             watsonPicBox.TabIndex = 7;
             watsonPicBox.TabStop = false;
-            watsonPicBox.Click += watsonPicBox_Click;
+            watsonPicBox.Click += WatsonPicBox_Click;
             // 
             // ezopsPicBox
             // 
@@ -230,7 +232,7 @@
             ezopsPicBox.SizeMode = PictureBoxSizeMode.AutoSize;
             ezopsPicBox.TabIndex = 6;
             ezopsPicBox.TabStop = false;
-            ezopsPicBox.Click += ezopsPicBox_Click;
+            ezopsPicBox.Click += EzopsPicBox_Click;
             // 
             // appianPicBox
             // 
@@ -240,7 +242,7 @@
             appianPicBox.Size = new Size(229, 194);
             appianPicBox.TabIndex = 5;
             appianPicBox.TabStop = false;
-            appianPicBox.Click += appianPicBox_Click;
+            appianPicBox.Click += AppianPicBox_Click;
             // 
             // adonisPicBox
             // 
@@ -251,7 +253,7 @@
             adonisPicBox.SizeMode = PictureBoxSizeMode.StretchImage;
             adonisPicBox.TabIndex = 3;
             adonisPicBox.TabStop = false;
-            adonisPicBox.Click += adonisPicBox_Click;
+            adonisPicBox.Click += AdonisPicBox_Click;
             // 
             // liminaPicBox
             // 
@@ -262,7 +264,7 @@
             liminaPicBox.SizeMode = PictureBoxSizeMode.StretchImage;
             liminaPicBox.TabIndex = 1;
             liminaPicBox.TabStop = false;
-            liminaPicBox.Click += liminaPicBox_Click;
+            liminaPicBox.Click += LiminaPicBox_Click;
             // 
             // addeparPicBox
             // 
@@ -273,7 +275,7 @@
             addeparPicBox.SizeMode = PictureBoxSizeMode.AutoSize;
             addeparPicBox.TabIndex = 0;
             addeparPicBox.TabStop = false;
-            addeparPicBox.Click += addeparPictBox_Click;
+            addeparPicBox.Click += AddeparPictBox_Click;
             // 
             // notifyIcon1
             // 

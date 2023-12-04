@@ -24,17 +24,17 @@ namespace toolsuiteapp.View
 
 
 
-        private void nextButton_Click(object sender, EventArgs e)
+        private void NextButton_Click(object sender, EventArgs e)
         {
             // create and open the wishlist form window here
         }
 
-        private void backButton_Click(object sender, EventArgs e)
+        private void BackButton_Click(object sender, EventArgs e)
         {
             // change the window back to the software categories form window 
         }
 
-        private void addeparPic_Click(object sender, EventArgs e)
+        private void AddeparPic_Click(object sender, EventArgs e)
         {
             // retrieve the category of this software
             // display items in the same category under related results 
@@ -50,9 +50,9 @@ namespace toolsuiteapp.View
             */
         }
 
-        private void changesCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void ChangesCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            WishlistForm form = new WishlistForm();
+            WishlistForm form = new();
             this.Hide();
             form.ShowDialog();
             this.Close();

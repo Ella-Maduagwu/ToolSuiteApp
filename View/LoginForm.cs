@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -21,8 +22,8 @@ namespace toolsuiteapp.View
         {
             InitializeComponent();
         }
-        string currentUserRole = string.Empty;
 
+      
         private void LoginButton_Click(object sender, EventArgs e)
         {
 
@@ -63,7 +64,7 @@ namespace toolsuiteapp.View
                         if (hashedPassword == storedHash)
                         {
                             string userRole = userSession.GetRole();
-                           if (currentUserRole == "Admin" || currentUserRole == "User")
+                           if (userRole == "Admin" || userRole == "User")
                             {
                                 HomepageForm homepageForm = new HomepageForm();
                                 this.Hide();
@@ -98,7 +99,7 @@ namespace toolsuiteapp.View
 
         }
 
-
+      
 
 
         //TO-DO: ensure to include a userrole column in the DB

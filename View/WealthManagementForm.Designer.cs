@@ -40,6 +40,7 @@
             LaminaWishCheckBox = new CheckBox();
             nextButton = new Button();
             backButton = new Button();
+            AddBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)addeparPic).BeginInit();
             ((System.ComponentModel.ISupportInitialize)liminiPicBox).BeginInit();
             SuspendLayout();
@@ -62,7 +63,7 @@
             addeparPic.SizeMode = PictureBoxSizeMode.StretchImage;
             addeparPic.TabIndex = 1;
             addeparPic.TabStop = false;
-            addeparPic.Click += addeparPic_Click;
+            addeparPic.Click += AddeparPic_Click;
             // 
             // wealthManagementLabl
             // 
@@ -94,7 +95,7 @@
             changesCheckBox.TabIndex = 4;
             changesCheckBox.Text = "Add to Wishlist ";
             changesCheckBox.UseVisualStyleBackColor = true;
-            changesCheckBox.CheckedChanged += changesCheckBox_CheckedChanged;
+            changesCheckBox.CheckedChanged += ChangesCheckBox_CheckedChanged;
             // 
             // addeparDescription
             // 
@@ -146,25 +147,36 @@
             nextButton.TabIndex = 11;
             nextButton.Text = "Next";
             nextButton.UseVisualStyleBackColor = true;
-            nextButton.Click += nextButton_Click;
+            nextButton.Click += NextButton_Click;
             // 
             // backButton
             // 
             backButton.ForeColor = Color.Red;
-            backButton.Location = new Point(70, 1229);
+            backButton.Location = new Point(80, 1203);
             backButton.Name = "backButton";
             backButton.Size = new Size(112, 34);
             backButton.TabIndex = 12;
             backButton.Text = "Back";
             backButton.UseVisualStyleBackColor = true;
-            backButton.Click += backButton_Click;
+            backButton.Click += BackButton_Click;
+            // 
+            // AddBtn
+            // 
+            AddBtn.Location = new Point(941, 25);
+            AddBtn.Name = "AddBtn";
+            AddBtn.Size = new Size(112, 34);
+            AddBtn.TabIndex = 13;
+            AddBtn.Text = "Add +";
+            AddBtn.UseVisualStyleBackColor = true;
+            AddBtn.Visible = false;
             // 
             // WealthMAnagementForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(1623, 1410);
+            ClientSize = new Size(1630, 1301);
+            Controls.Add(AddBtn);
             Controls.Add(backButton);
             Controls.Add(nextButton);
             Controls.Add(LaminaWishCheckBox);
@@ -196,5 +208,6 @@
         private CheckBox LaminaWishCheckBox;
         private Button backButton;
         private Button nextButton;
+        private Button AddBtn;
     }
 }

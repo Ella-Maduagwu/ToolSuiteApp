@@ -8,116 +8,151 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using toolsuiteapp.Controller;
+using toolsuiteapp.Data;
 
 namespace toolsuiteapp.View
 {
     public partial class HomepageForm : Form
     {
+        private SearchController searchController;
         public HomepageForm()
         {
             InitializeComponent();
+            UserRepository userRepository = new UserRepository();
+            searchController = new SearchController(this, userRepository);
         }
 
-        private void searchButton_Click(object sender, EventArgs e)
+        private void SearchButton_Click(object sender, EventArgs e)
         {
-            string searchstring = searchTxtBox.Text;
-            SearchController searchController = new SearchController();
-            searchController.PerformSearch(searchstring);
+            string searchTerm = searchTxtBox.Text;
+            searchController.PerformSearchAndOpenForm(searchTerm);
         }
-
         private void HomepageForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void wealthMLabel_Click(object sender, EventArgs e)
-        {
-            WealthMAnagementForm wealth = new WealthMAnagementForm();
-            wealth.ShowDialog();
-            this.Close();
-        }
-        private void BusinessManagLabel_Click(object sender, EventArgs e)
-        {
-            // same for business management 
-
-
-        }
-        private void adoitPicBox_Click(object sender, EventArgs e)
-        {
-            // anywhere you see picBox, check the name in front, it is the name of the software 
-            // therefore open the page for that software, the one that has add to wishlist or edit 
-            // please do it with the admin in mind 
-        }
-
-        private void adonisPicBox_Click(object sender, EventArgs e)
-        {
-            // this is same as above 
-        }
-
-        private void finbournePicBox_Click(object sender, EventArgs e)
-        {
-            //this is same as above 
-        }
-
-        private void dataManagLabel_Click(object sender, EventArgs e)
-        {
-            // this is to open the datamanagement thing 
-        }
-
-        private void liminaPicBox_Click(object sender, EventArgs e)
-        {
-            // open wealth management here 
-        }
-
-        private void panel1_Click(object sender, EventArgs e)
         {
             // ignore this one 
         }
 
-        private void coherentPicBox_Click(object sender, EventArgs e)
+        private void WealthMLabel_Click(object sender, EventArgs e)
         {
-
+            WealthMAnagementForm wealth = new();
+            this.Hide();
+            wealth.ShowDialog();
+            this.Close();
         }
 
-        private void appianPicBox_Click(object sender, EventArgs e)
+        private void AdonisPicBox_Click(object sender, EventArgs e)
         {
-
+            AdonisInfoForm adonis = new();
+            this.Hide();
+            adonis.ShowDialog();
+            this.Close();
         }
 
-        private void watsonPicBox_Click(object sender, EventArgs e)
+        private void FinbournePicBox_Click(object sender, EventArgs e)
         {
-
+            FinbourneInfoForm finbourne = new();
+            this.Hide();
+            finbourne.ShowDialog();
+            this.Close();
         }
 
-        private void ezopsPicBox_Click(object sender, EventArgs e)
+        private void DataManagLabel_Click(object sender, EventArgs e)
         {
-
+            DataManagementForm data = new();
+            this.Hide();
+            data.ShowDialog();
+            this.Close();
         }
 
-        private void addeparPictBox_Click(object sender, EventArgs e)
+        private void LiminaPicBox_Click(object sender, EventArgs e)
         {
-            AddeparInfoPage addepar = new AddeparInfoPage();
+            LiminaInfoForm limina = new();
+            this.Hide();
+            limina.ShowDialog();
+            this.Close();
+        }
+
+        private void Panel1_Click(object sender, EventArgs e)
+        {
+            // ignore this one 
+        }
+
+        private void CoherentPicBox_Click(object sender, EventArgs e)
+        {
+            CoherentInfoForm coherent = new();
+            this.Hide();
+            coherent.ShowDialog();
+            this.Close();
+        }
+
+        private void AppianPicBox_Click(object sender, EventArgs e)
+        {
+            AppianInfoForm appian = new();
+            this.Hide();
+            appian.ShowDialog();
+            this.Close();
+        }
+
+        private void WatsonPicBox_Click(object sender, EventArgs e)
+        {
+            WatsonInfoPage watson = new();
+            this.Hide();
+            watson.ShowDialog();
+            this.Close();
+        }
+
+        private void EzopsPicBox_Click(object sender, EventArgs e)
+        {
+            EzopsInfoForm ezops = new();
+            this.Hide(); ezops.ShowDialog(); this.Close();
+        }
+
+        private void AddeparPictBox_Click(object sender, EventArgs e)
+        {
+            AddeparInfoPage addepar = new();
             this.Hide();
             addepar.ShowDialog();
             this.Close();
         }
 
-        private void investmentBanLabel_Click(object sender, EventArgs e)
+        private void InvestmentBanLabel_Click(object sender, EventArgs e)
         {
-            // open the page for investment banking here
-            // these events are the hyperlink thing on the homepage 
+            InvestmentBankingForm investment = new();
+            this.Hide();
+            investment.ShowDialog();
+            this.Close();
         }
 
-        private void assetManaLabel_Click(object sender, EventArgs e)
+        private void AssetManaLabel_Click(object sender, EventArgs e)
         {
-            // same 
+            AssetManagementForm assetMana = new();
+            this.Hide();
+            assetMana.ShowDialog();
+            this.Close();
         }
 
-        private void softwareButton_Click(object sender, EventArgs e)
+        private void SoftwareButton_Click(object sender, EventArgs e)
         {
             // open the Software Categories form here 
-            SoftwareCategoriesForm softwareCategories = new SoftwareCategoriesForm();
+            SoftwareCategoriesForm softwareCategories = new();
             softwareCategories.ShowDialog();
+            this.Close();
+        }
+
+        private void profileButton_Click(object sender, EventArgs e)
+        {// users can open their profile from here 
+            ProfileForm form = new ProfileForm();
+            this.Hide();
+            form.ShowDialog();
+            this.Close();
+
+        }
+
+        private void vendorButton_Click(object sender, EventArgs e)
+        {
+            VendorForm form = new VendorForm();
+            this.Hide();
+            form.ShowDialog();
             this.Close();
         }
     }
