@@ -9,15 +9,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using toolsuiteapp.Controller;
 using toolsuiteapp.Data;
+using toolsuiteapp.Service;
 
 namespace toolsuiteapp.View
 {
     public partial class HomepageForm : Form
     {
         private SearchController searchController;
-        public HomepageForm()
+        private UserSession _userSession;
+        public HomepageForm( UserSession userSession)
         {
             InitializeComponent();
+            _userSession = userSession;
             UserRepository userRepository = new UserRepository();
             searchController = new SearchController(this, userRepository);
         }
@@ -134,7 +137,7 @@ namespace toolsuiteapp.View
         private void SoftwareButton_Click(object sender, EventArgs e)
         {
             // open the Software Categories form here 
-            SoftwareCategoriesForm softwareCategories = new();
+            SoftwareCategoriesForm softwareCategories = new(_userSession);
             softwareCategories.ShowDialog();
             this.Close();
         }

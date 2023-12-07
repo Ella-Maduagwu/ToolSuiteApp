@@ -45,12 +45,13 @@
             // 
             // AddBtn
             // 
-            AddBtn.Location = new Point(978, 55);
+            AddBtn.Location = new Point(1240, 55);
             AddBtn.Name = "AddBtn";
             AddBtn.Size = new Size(79, 40);
             AddBtn.TabIndex = 3;
             AddBtn.Text = "Add +";
             AddBtn.UseVisualStyleBackColor = true;
+            AddBtn.Visible = false;
             AddBtn.Click += AddBtn_Click;
             // 
             // SoftwareCategoriesForm

@@ -12,19 +12,12 @@ namespace toolsuiteapp.Controller
 {
     public  class CategoriesController
     {
-        private SoftwareCategoriesForm view;// initialization
-        private UserRepository userRepository;
-        public CategoriesController(SoftwareCategoriesForm view, UserRepository userRepository)
+      
+        private UserRepository _userRepository;
+        public CategoriesController( UserRepository userRepository)
         {
-            this.view = view;
-            this.userRepository = userRepository;
+            this._userRepository = userRepository;
 
-            LoadCategories();// fetches software categories through UserRepository 
-        }
-
-        public void LoadCategories()
-        {
-            var categories = userRepository.GetSoftwareCategories();
            
         }
 
@@ -32,21 +25,21 @@ namespace toolsuiteapp.Controller
         {
             if (category.Id > 0)
             {
-                userRepository.UpdateCategory(category);// updates a
+                _userRepository.UpdateCategory(category);// updates a
             }
             else
             {
-                userRepository.AddCategory(category);// adds new category to the db
+                _userRepository.AddCategory(category);// adds new category to the db
                
             }
-            LoadCategories();// refresh the list
+            
 
         }
 
         public void DeleteCategory(SoftwareCategoriesModel category)
         {
-            userRepository.DeleteCategory(category);
-            LoadCategories();// refresh the list
+            _userRepository.DeleteCategory(category);
+            
         }
 
     }

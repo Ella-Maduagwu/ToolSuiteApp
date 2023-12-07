@@ -18,7 +18,7 @@ namespace toolsuiteapp.Service
         {
             
             var userRepo = new UserRepository();
-            var ( storedFirstName, userRole) = userRepo.GetUserRole(email);// this method returns the h
+            var userRole = userRepo.GetUserRole(email);// this method returns the h
             grantAccess(userRole);
         }
 

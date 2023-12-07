@@ -18,21 +18,17 @@ namespace toolsuiteapp.View
     public partial class SoftwareCategoriesForm : Form
     {
         private CategoriesController categoriesController;
+        private UserSession _userSession;
         
-        public SoftwareCategoriesForm()
+        public SoftwareCategoriesForm(UserSession userSession)
         {
            
             InitializeComponent();
-            UserSession userSession = new UserSession();
-            string userRole = userSession.GetRole();
-            AddBtn.Visible = false;// hide the add button
+            _userSession = userSession;
             UserRepository userRepository = new UserRepository();
-            this.categoriesController = new CategoriesController(this, userRepository);
+            this.categoriesController = new CategoriesController(userRepository);
             var categories = userRepository.GetSoftwareCategories();
-            if (categories != null)
-            {
-              
-            }
+            string currentUser = userSession.GetRole();
            
             int yOffSet = 248;
             
@@ -50,16 +46,21 @@ namespace toolsuiteapp.View
                 // add click event to button 
                 newButton.Click += (sender, e) =>
                 {
-
+                    UserRepository userRepository = new UserRepository();
+                    userRepository.GetSoftwares(category.Name);
+                    AssetManagementForm form = new AssetManagementForm();
+                    Specific
+                    form.ShowDialog();
                 };
 
                 this.Controls.Add(newButton);
-
-                if (userRole == "Admin")
-                {
-                    AddBtn.Visible = true;// only make the add button visible if the currentuser has admin rights
-                }
+               
                 
+            }
+
+            if (currentUser == "Admin")
+            {
+                AddBtn.Visible = true;
             }
         }
 
@@ -70,7 +71,7 @@ namespace toolsuiteapp.View
 
         private void LogoButton_Click(object sender, EventArgs e)
         {
-            HomepageForm homepageForm = new();
+            HomepageForm homepageForm = new(_userSession);
             this.Hide();
             homepageForm.ShowDialog();
             this.Show();
@@ -78,7 +79,8 @@ namespace toolsuiteapp.View
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
-            AddCategoryForm addCategoryForm = new AddCategoryForm();
+            UserRepository userRepository = new UserRepository();
+            AddCategoryForm addCategoryForm = new AddCategoryForm(userRepository);
             this.Hide();
             addCategoryForm.ShowDialog();
             this.Close();

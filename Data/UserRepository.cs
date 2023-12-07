@@ -77,7 +77,7 @@ namespace toolsuiteapp.Data
                 {
                     connection.Open();
 
-                    string query = "SELECT passwordhash, salt, role FROM users WHERE emailaddress = @email";
+                    string query = "SELECT passwordhash, salt FROM users WHERE emailaddress = @email";
 
                     using var command = new MySqlCommand(query, connection);
                     command.Parameters.AddWithValue("@email", emailAddress1);
@@ -91,7 +91,8 @@ namespace toolsuiteapp.Data
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error retrieving password info from database");
+                    Logger logger = new Logger();
+                        logger.LogException(ex);
                 }
 
             }
@@ -99,9 +100,8 @@ namespace toolsuiteapp.Data
         }
 
 
-        public (string firstName, string Role) GetUserRole(string emailAddress1)
+        public string GetUserRole(string emailAddress1)
         {
-            string defaultName = string.Empty;
             string defaultRole = "User";
 
             using (var connection = new MySqlConnection(_connectionString))
@@ -110,25 +110,28 @@ namespace toolsuiteapp.Data
                 {
                     connection.Open();
 
-                    string query = "SELECT passwordhash, salt, role FROM users WHERE emailaddress = @email";
+                    string query = "SELECT role FROM users WHERE emailaddress = @email";
 
                     using var command = new MySqlCommand(query, connection);
                     command.Parameters.AddWithValue("@email", emailAddress1);
                     using var reader = command.ExecuteReader();
                     if (reader.Read())
                     {
-                        string firstName = reader["firstname"].ToString() ?? defaultName;
                         string Role = reader["role"].ToString() ?? defaultRole;
-                        return (firstName, Role);
+                        return  Role;
                     }
+
+
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error retrieving password info from database");
+                    Logger logger = new Logger();
+                        logger.LogException(ex);
+                    
                 }
 
             }
-            return (defaultName, defaultRole);
+            return defaultRole;
         }
 
         public void StorePasswordResetToken(string userEmail, string resetToken, DateTime tokenExpiry)
@@ -208,7 +211,7 @@ namespace toolsuiteapp.Data
                 logger.LogException(ex);
             }
 
-            // add error handling and logger
+            
         }
 
 
@@ -299,9 +302,10 @@ namespace toolsuiteapp.Data
                 command.Parameters.AddWithValue("@name", category.Name);
                 command.ExecuteNonQuery();
             }
-            catch
+            catch (Exception ex)
             {
-                // implement logger 
+                Logger logger = new Logger();
+                logger.LogException(ex);
             }
         }
 
@@ -313,17 +317,55 @@ namespace toolsuiteapp.Data
                 connection.Open();
                 var command = connection.CreateCommand();
                 command.CommandText = "UPDATE software_category SET Name = @name WHERE Id = @id";
-                command.Parameters.AddWithValue("@id", category.Id);
+               
                 command.Parameters.AddWithValue("@name", category.Name);
 
                 command.ExecuteNonQuery();
             }
-            catch
+            catch (Exception ex)
             {
-                // implemment logger 
+                Logger logger = new Logger();
+                logger.LogException(ex);
             }
 
         }
+
+        public List<SoftwareCategoriesModel> GetSoftwares(string categoryName)
+        {
+            List<SoftwareCategoriesModel> softwares = new List<SoftwareCategoriesModel>();
+            try
+            {
+                using var connection = new MySqlConnection(_connectionString);
+                connection.Open();
+                var command = connection.CreateCommand();
+                command.CommandText = "SELECT softwarename FROM software_category WHERE name = @categoryName";
+                command.Parameters.AddWithValue("@categoryName", categoryName);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var software = new SoftwareCategoriesModel
+                        {
+                            SoftwareName = reader.GetString("softwarename"),
+                        };
+
+                        softwares.Add(software);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger logger = new Logger();
+                logger.LogException(ex);
+            }
+
+            return softwares;
+        }
+
+
+
+
 
         public List<SearchResultModel> MultiCriteriaSearch(string searchTerm)
         {

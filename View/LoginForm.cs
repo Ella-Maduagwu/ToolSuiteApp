@@ -24,7 +24,7 @@ namespace toolsuiteapp.View
         }
 
       
-        private void LoginButton_Click(object sender, EventArgs e)
+        public void LoginButton_Click(object sender, EventArgs e)
         {
 
             string emailAddress1 = emailTextBox.Text;
@@ -43,6 +43,7 @@ namespace toolsuiteapp.View
             var (storedHash, storedSalt) = userRepo.GetUserPasswordInfo(emailAddress1);// this method returns the hashed password and salt stored in the db for the email entered 
             UserSession userSession = new UserSession();
             userSession.Initialize(emailAddress1);
+            string userRole = userSession.GetRole();
             if (errorValidations.Count == 0)
             {
                 if (regex.IsMatch(emailTextBox.Text))
@@ -63,10 +64,19 @@ namespace toolsuiteapp.View
 
                         if (hashedPassword == storedHash)
                         {
-                            string userRole = userSession.GetRole();
-                           if (userRole == "Admin" || userRole == "User")
+                           
+                           if (userRole == "Admin")
                             {
-                                HomepageForm homepageForm = new HomepageForm();
+                                MessageBox.Show("welcome," + userRole);
+                                HomepageForm homepageForm = new HomepageForm(userSession);
+                                this.Hide();
+                                homepageForm.ShowDialog();
+                                this.Close();
+                            }
+                           else if ( userRole == "User")
+                            {
+                                MessageBox.Show("welcome " + userRole);
+                                HomepageForm homepageForm = new HomepageForm(userSession);
                                 this.Hide();
                                 homepageForm.ShowDialog();
                                 this.Close();
