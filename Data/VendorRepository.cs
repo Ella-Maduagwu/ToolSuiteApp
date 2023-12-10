@@ -66,7 +66,7 @@ namespace toolsuiteapp.Data
             command.Parameters.AddWithValue("@NewName", vendor.Name);
             command.Parameters.AddWithValue("@NewLocations", vendor.Locations);
             command.Parameters.AddWithValue("@NewDateEstablished", vendor.DateEstablished);
-            command.Parameters.AddWithValue("@NewContactNumbers", string.Join(",", vendor.ContactNumbers));
+            command.Parameters.AddWithValue("@NewContactNumbers", vendor.ContactNumbers);
             command.Parameters.AddWithValue("@NewWebsiteUrl", vendor.WebsiteUrl);
             command.Parameters.AddWithValue("@NewEmployeeAmount", vendor.EmployeeAmount);
             command.Parameters.AddWithValue("@ContactNumbers", vendor.ContactNumbers);
