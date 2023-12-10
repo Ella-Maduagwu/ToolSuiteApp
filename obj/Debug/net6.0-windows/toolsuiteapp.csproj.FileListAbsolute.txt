@@ -130,3 +130,4 @@ C:\Users\e\Downloads\ToolSuiteApp-master(1)\ToolSuiteApp-master\bin\Debug\net6.0
 C:\Users\e\Downloads\ToolSuiteApp-master(1)\ToolSuiteApp-master\bin\Debug\net6.0-windows\Utilities\finbourne.jpg
 C:\Users\e\Downloads\ToolSuiteApp-master(1)\ToolSuiteApp-master\bin\Debug\net6.0-windows\Utilities\limina.jpg
 C:\Users\e\Downloads\ToolSuiteApp-master(1)\ToolSuiteApp-master\bin\Debug\net6.0-windows\Utilities\watson.jpg
+C:\Users\e\Downloads\ToolSuiteApp-master(1)\ToolSuiteApp-master\obj\Debug\net6.0-windows\toolsuiteapp.sourcelink.json

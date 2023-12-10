@@ -32,35 +32,29 @@
             softwareImageBox = new PictureBox();
             logoLabel = new Label();
             softwareNameLabel = new Label();
-            AddToWishlistLabel = new Button();
             websiteLabel = new LinkLabel();
-            screenshotsPanel = new Panel();
-            pictureBox10 = new PictureBox();
-            pictureBox9 = new PictureBox();
-            pictureBox8 = new PictureBox();
-            pictureBox7 = new PictureBox();
-            pictureBox6 = new PictureBox();
-            pictureBox5 = new PictureBox();
-            pictureBox4 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            screenPicBox1 = new PictureBox();
             softwareDescriptionLabel = new Label();
-            softwareAdditionalInfoLabel = new Label();
-            EditButton = new Button();
             contextMenuStrip1 = new ContextMenuStrip(components);
             softwareDescriptionTextBox = new RichTextBox();
-            softwareAdditionalInfoTextBox = new RichTextBox();
+            label1 = new Label();
+            softwareLastReviewedLabel = new Label();
+            label2 = new Label();
+            softwareLastDemoLabel = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            vendorNameTextBox = new TextBox();
+            vendorDateEstablishedTextBox = new TextBox();
+            vendorEmployeeAmountTextBox = new TextBox();
+            vendorWebsiteUrlTextBox = new TextBox();
+            label6 = new Label();
+            label7 = new Label();
+            vendorContactNumbesTextBox = new RichTextBox();
+            vendorLocationListTextBox = new RichTextBox();
+            label8 = new Label();
+            label9 = new Label();
+            vendorUpdateButton = new Button();
             ((System.ComponentModel.ISupportInitialize)softwareImageBox).BeginInit();
-            screenshotsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)screenPicBox1).BeginInit();
             SuspendLayout();
             // 
             // softwareImageBox
@@ -72,7 +66,6 @@
             softwareImageBox.SizeMode = PictureBoxSizeMode.Zoom;
             softwareImageBox.TabIndex = 0;
             softwareImageBox.TabStop = false;
-            softwareImageBox.Click += screenPicBox1_Click;
             // 
             // logoLabel
             // 
@@ -95,19 +88,6 @@
             softwareNameLabel.Size = new Size(0, 21);
             softwareNameLabel.TabIndex = 2;
             // 
-            // AddToWishlistLabel
-            // 
-            AddToWishlistLabel.Anchor = AnchorStyles.Right;
-            AddToWishlistLabel.BackColor = SystemColors.ButtonHighlight;
-            AddToWishlistLabel.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            AddToWishlistLabel.Location = new Point(800, 23);
-            AddToWishlistLabel.Margin = new Padding(2);
-            AddToWishlistLabel.Name = "AddToWishlistLabel";
-            AddToWishlistLabel.Size = new Size(86, 24);
-            AddToWishlistLabel.TabIndex = 3;
-            AddToWishlistLabel.Text = "Add to Wishlist ";
-            AddToWishlistLabel.UseVisualStyleBackColor = false;
-            // 
             // websiteLabel
             // 
             websiteLabel.AutoSize = true;
@@ -122,148 +102,15 @@
             websiteLabel.Visible = false;
             websiteLabel.LinkClicked += websiteLabel_LinkClicked;
             // 
-            // screenshotsPanel
-            // 
-            screenshotsPanel.Anchor = AnchorStyles.Right;
-            screenshotsPanel.AutoScroll = true;
-            screenshotsPanel.Controls.Add(pictureBox10);
-            screenshotsPanel.Controls.Add(pictureBox9);
-            screenshotsPanel.Controls.Add(pictureBox8);
-            screenshotsPanel.Controls.Add(pictureBox7);
-            screenshotsPanel.Controls.Add(pictureBox6);
-            screenshotsPanel.Controls.Add(pictureBox5);
-            screenshotsPanel.Controls.Add(pictureBox4);
-            screenshotsPanel.Controls.Add(pictureBox3);
-            screenshotsPanel.Controls.Add(screenPicBox1);
-            screenshotsPanel.Location = new Point(8, 235);
-            screenshotsPanel.Margin = new Padding(2);
-            screenshotsPanel.Name = "screenshotsPanel";
-            screenshotsPanel.Size = new Size(1036, 117);
-            screenshotsPanel.TabIndex = 5;
-            // 
-            // pictureBox10
-            // 
-            pictureBox10.Location = new Point(261, 13);
-            pictureBox10.Margin = new Padding(2);
-            pictureBox10.Name = "pictureBox10";
-            pictureBox10.Size = new Size(105, 91);
-            pictureBox10.TabIndex = 8;
-            pictureBox10.TabStop = false;
-            pictureBox10.Click += screenPicBox1_Click;
-            // 
-            // pictureBox9
-            // 
-            pictureBox9.Location = new Point(878, 13);
-            pictureBox9.Margin = new Padding(2);
-            pictureBox9.Name = "pictureBox9";
-            pictureBox9.Size = new Size(105, 91);
-            pictureBox9.TabIndex = 7;
-            pictureBox9.TabStop = false;
-            pictureBox9.Click += screenPicBox1_Click;
-            // 
-            // pictureBox8
-            // 
-            pictureBox8.Location = new Point(1006, 13);
-            pictureBox8.Margin = new Padding(2);
-            pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(105, 91);
-            pictureBox8.TabIndex = 6;
-            pictureBox8.TabStop = false;
-            pictureBox8.Click += screenPicBox1_Click;
-            // 
-            // pictureBox7
-            // 
-            pictureBox7.Location = new Point(778, 13);
-            pictureBox7.Margin = new Padding(2);
-            pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(69, 91);
-            pictureBox7.TabIndex = 5;
-            pictureBox7.TabStop = false;
-            pictureBox7.Click += screenPicBox1_Click;
-            // 
-            // pictureBox6
-            // 
-            pictureBox6.Location = new Point(659, 13);
-            pictureBox6.Margin = new Padding(2);
-            pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(105, 91);
-            pictureBox6.TabIndex = 4;
-            pictureBox6.TabStop = false;
-            pictureBox6.Click += screenPicBox1_Click;
-            // 
-            // pictureBox5
-            // 
-            pictureBox5.Location = new Point(529, 13);
-            pictureBox5.Margin = new Padding(2);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(105, 91);
-            pictureBox5.TabIndex = 3;
-            pictureBox5.TabStop = false;
-            pictureBox5.Click += screenPicBox1_Click;
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.Location = new Point(388, 13);
-            pictureBox4.Margin = new Padding(2);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(124, 91);
-            pictureBox4.TabIndex = 2;
-            pictureBox4.TabStop = false;
-            pictureBox4.Click += screenPicBox1_Click;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Location = new Point(86, 13);
-            pictureBox3.Margin = new Padding(2);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(153, 91);
-            pictureBox3.TabIndex = 1;
-            pictureBox3.TabStop = false;
-            pictureBox3.Click += screenPicBox1_Click;
-            // 
-            // screenPicBox1
-            // 
-            screenPicBox1.Location = new Point(-58, 13);
-            screenPicBox1.Margin = new Padding(2);
-            screenPicBox1.Name = "screenPicBox1";
-            screenPicBox1.Size = new Size(129, 91);
-            screenPicBox1.TabIndex = 0;
-            screenPicBox1.TabStop = false;
-            screenPicBox1.Click += screenPicBox1_Click;
-            // 
             // softwareDescriptionLabel
             // 
             softwareDescriptionLabel.AutoSize = true;
-            softwareDescriptionLabel.Location = new Point(41, 385);
+            softwareDescriptionLabel.Location = new Point(45, 218);
             softwareDescriptionLabel.Margin = new Padding(2, 0, 2, 0);
             softwareDescriptionLabel.Name = "softwareDescriptionLabel";
             softwareDescriptionLabel.Size = new Size(70, 15);
             softwareDescriptionLabel.TabIndex = 7;
             softwareDescriptionLabel.Text = "Description:";
-            // 
-            // softwareAdditionalInfoLabel
-            // 
-            softwareAdditionalInfoLabel.AutoSize = true;
-            softwareAdditionalInfoLabel.Location = new Point(437, 385);
-            softwareAdditionalInfoLabel.Margin = new Padding(2, 0, 2, 0);
-            softwareAdditionalInfoLabel.Name = "softwareAdditionalInfoLabel";
-            softwareAdditionalInfoLabel.Size = new Size(131, 15);
-            softwareAdditionalInfoLabel.TabIndex = 8;
-            softwareAdditionalInfoLabel.Text = "Additional Information:";
-            softwareAdditionalInfoLabel.Visible = false;
-            // 
-            // EditButton
-            // 
-            EditButton.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            EditButton.Location = new Point(897, 23);
-            EditButton.Margin = new Padding(2);
-            EditButton.Name = "EditButton";
-            EditButton.Size = new Size(64, 24);
-            EditButton.TabIndex = 9;
-            EditButton.Text = "Edit";
-            EditButton.UseVisualStyleBackColor = true;
-            EditButton.Visible = false;
-            EditButton.Click += EditButton_Click;
             // 
             // contextMenuStrip1
             // 
@@ -272,77 +119,226 @@
             // 
             // softwareDescriptionTextBox
             // 
-            softwareDescriptionTextBox.Location = new Point(45, 403);
+            softwareDescriptionTextBox.Location = new Point(45, 236);
             softwareDescriptionTextBox.Name = "softwareDescriptionTextBox";
             softwareDescriptionTextBox.ReadOnly = true;
-            softwareDescriptionTextBox.Size = new Size(329, 138);
+            softwareDescriptionTextBox.Size = new Size(282, 138);
             softwareDescriptionTextBox.TabIndex = 11;
             softwareDescriptionTextBox.Text = "";
             // 
-            // softwareAdditionalInfoTextBox
+            // label1
             // 
-            softwareAdditionalInfoTextBox.Location = new Point(437, 403);
-            softwareAdditionalInfoTextBox.Name = "softwareAdditionalInfoTextBox";
-            softwareAdditionalInfoTextBox.ReadOnly = true;
-            softwareAdditionalInfoTextBox.Size = new Size(358, 138);
-            softwareAdditionalInfoTextBox.TabIndex = 12;
-            softwareAdditionalInfoTextBox.Text = "";
-            softwareAdditionalInfoTextBox.Visible = false;
+            label1.AutoSize = true;
+            label1.Location = new Point(45, 377);
+            label1.Name = "label1";
+            label1.Size = new Size(84, 15);
+            label1.TabIndex = 12;
+            label1.Text = "Last Reviewed:";
+            // 
+            // softwareLastReviewedLabel
+            // 
+            softwareLastReviewedLabel.AutoSize = true;
+            softwareLastReviewedLabel.Location = new Point(135, 377);
+            softwareLastReviewedLabel.Name = "softwareLastReviewedLabel";
+            softwareLastReviewedLabel.Size = new Size(0, 15);
+            softwareLastReviewedLabel.TabIndex = 13;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(45, 401);
+            label2.Name = "label2";
+            label2.Size = new Size(66, 15);
+            label2.TabIndex = 14;
+            label2.Text = "Last Demo:";
+            // 
+            // softwareLastDemoLabel
+            // 
+            softwareLastDemoLabel.AutoSize = true;
+            softwareLastDemoLabel.Location = new Point(117, 401);
+            softwareLastDemoLabel.Name = "softwareLastDemoLabel";
+            softwareLastDemoLabel.Size = new Size(0, 15);
+            softwareLastDemoLabel.TabIndex = 15;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(567, 39);
+            label3.Name = "label3";
+            label3.Size = new Size(84, 30);
+            label3.TabIndex = 16;
+            label3.Text = "Vendor";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(468, 87);
+            label4.Name = "label4";
+            label4.Size = new Size(45, 15);
+            label4.TabIndex = 17;
+            label4.Text = "Name: ";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(468, 114);
+            label5.Name = "label5";
+            label5.Size = new Size(96, 15);
+            label5.TabIndex = 19;
+            label5.Text = "Date Established:";
+            // 
+            // vendorNameTextBox
+            // 
+            vendorNameTextBox.Location = new Point(582, 79);
+            vendorNameTextBox.Name = "vendorNameTextBox";
+            vendorNameTextBox.Size = new Size(123, 23);
+            vendorNameTextBox.TabIndex = 20;
+            // 
+            // vendorDateEstablishedTextBox
+            // 
+            vendorDateEstablishedTextBox.Location = new Point(582, 111);
+            vendorDateEstablishedTextBox.Name = "vendorDateEstablishedTextBox";
+            vendorDateEstablishedTextBox.Size = new Size(123, 23);
+            vendorDateEstablishedTextBox.TabIndex = 21;
+            // 
+            // vendorEmployeeAmountTextBox
+            // 
+            vendorEmployeeAmountTextBox.Location = new Point(582, 140);
+            vendorEmployeeAmountTextBox.Name = "vendorEmployeeAmountTextBox";
+            vendorEmployeeAmountTextBox.Size = new Size(123, 23);
+            vendorEmployeeAmountTextBox.TabIndex = 22;
+            // 
+            // vendorWebsiteUrlTextBox
+            // 
+            vendorWebsiteUrlTextBox.Location = new Point(582, 174);
+            vendorWebsiteUrlTextBox.Name = "vendorWebsiteUrlTextBox";
+            vendorWebsiteUrlTextBox.Size = new Size(123, 23);
+            vendorWebsiteUrlTextBox.TabIndex = 22;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(468, 177);
+            label6.Name = "label6";
+            label6.Size = new Size(77, 15);
+            label6.TabIndex = 19;
+            label6.Text = "Website Link:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(468, 143);
+            label7.Name = "label7";
+            label7.Size = new Size(109, 15);
+            label7.TabIndex = 19;
+            label7.Text = "Employee Amount:";
+            // 
+            // vendorContactNumbesTextBox
+            // 
+            vendorContactNumbesTextBox.Location = new Point(468, 244);
+            vendorContactNumbesTextBox.Name = "vendorContactNumbesTextBox";
+            vendorContactNumbesTextBox.Size = new Size(237, 96);
+            vendorContactNumbesTextBox.TabIndex = 23;
+            vendorContactNumbesTextBox.Text = "";
+            // 
+            // vendorLocationListTextBox
+            // 
+            vendorLocationListTextBox.Location = new Point(468, 367);
+            vendorLocationListTextBox.Name = "vendorLocationListTextBox";
+            vendorLocationListTextBox.Size = new Size(237, 96);
+            vendorLocationListTextBox.TabIndex = 24;
+            vendorLocationListTextBox.Text = "";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(468, 226);
+            label8.Name = "label8";
+            label8.Size = new Size(104, 15);
+            label8.TabIndex = 25;
+            label8.Text = "Contact Numbers:";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(468, 349);
+            label9.Name = "label9";
+            label9.Size = new Size(77, 15);
+            label9.TabIndex = 26;
+            label9.Text = "Location List:";
+            // 
+            // vendorUpdateButton
+            // 
+            vendorUpdateButton.Location = new Point(468, 486);
+            vendorUpdateButton.Name = "vendorUpdateButton";
+            vendorUpdateButton.Size = new Size(237, 23);
+            vendorUpdateButton.TabIndex = 27;
+            vendorUpdateButton.Text = "Update";
+            vendorUpdateButton.UseVisualStyleBackColor = true;
+            vendorUpdateButton.Click += vendorUpdateButton_Click;
             // 
             // SoftwareInfoBaseForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1058, 553);
-            Controls.Add(softwareAdditionalInfoTextBox);
+            ClientSize = new Size(775, 575);
+            Controls.Add(vendorUpdateButton);
+            Controls.Add(label9);
+            Controls.Add(label8);
+            Controls.Add(vendorLocationListTextBox);
+            Controls.Add(vendorContactNumbesTextBox);
+            Controls.Add(vendorWebsiteUrlTextBox);
+            Controls.Add(vendorEmployeeAmountTextBox);
+            Controls.Add(vendorDateEstablishedTextBox);
+            Controls.Add(vendorNameTextBox);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(softwareLastDemoLabel);
+            Controls.Add(label2);
+            Controls.Add(softwareLastReviewedLabel);
+            Controls.Add(label1);
             Controls.Add(softwareDescriptionTextBox);
-            Controls.Add(EditButton);
-            Controls.Add(softwareAdditionalInfoLabel);
             Controls.Add(softwareDescriptionLabel);
-            Controls.Add(screenshotsPanel);
             Controls.Add(websiteLabel);
-            Controls.Add(AddToWishlistLabel);
             Controls.Add(softwareNameLabel);
             Controls.Add(logoLabel);
             Controls.Add(softwareImageBox);
             Margin = new Padding(2);
             Name = "SoftwareInfoBaseForm";
             ((System.ComponentModel.ISupportInitialize)softwareImageBox).EndInit();
-            screenshotsPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)screenPicBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
         private Label logoLabel;
-        private Panel screenshotsPanel;
         public Label softwareNameLabel;
-        public Button AddToWishlistLabel;
         public LinkLabel websiteLabel;
         public PictureBox softwareImageBox;
         public Label softwareDescriptionLabel;
-        public Label softwareAdditionalInfoLabel;
-        public Button EditButton;
-        public PictureBox pictureBox3;
-        public PictureBox screenPicBox1;
-        public PictureBox pictureBox10;
-        public PictureBox pictureBox9;
-        public PictureBox pictureBox8;
-        public PictureBox pictureBox7;
-        public PictureBox pictureBox6;
-        public PictureBox pictureBox5;
-        public PictureBox pictureBox4;
         private ContextMenuStrip contextMenuStrip1;
         private RichTextBox softwareDescriptionTextBox;
-        private RichTextBox softwareAdditionalInfoTextBox;
+        private Label label1;
+        private Label softwareLastReviewedLabel;
+        private Label label2;
+        private Label softwareLastDemoLabel;
+        private Label label3;
+        private Label label4;
+        private Label label5;
+        private TextBox vendorNameTextBox;
+        private TextBox vendorDateEstablishedTextBox;
+        private TextBox vendorEmployeeAmountTextBox;
+        private TextBox vendorWebsiteUrlTextBox;
+        private Label label6;
+        private Label label7;
+        private RichTextBox vendorContactNumbesTextBox;
+        private RichTextBox vendorLocationListTextBox;
+        private Label label8;
+        private Label label9;
+        private Button vendorUpdateButton;
     }
 }

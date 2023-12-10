@@ -19,7 +19,11 @@ namespace toolsuiteapp.Data
             connection.Open();
 
             var command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM software WHERE id = @Id;";
+            command.CommandText = @"
+            SELECT softwares.*, categories.* 
+            FROM softwares 
+            JOIN categories ON categories.software_id = softwares.software_id 
+            WHERE softwares.software_id = @Id;";
             command.Parameters.AddWithValue("Id", id);
 
             using var reader = command.ExecuteReader();
@@ -27,13 +31,13 @@ namespace toolsuiteapp.Data
 
             if (reader.Read())
             {
-                software.Id = reader.GetInt32("id");
-                software.Name = reader.GetString("name");
+                software.Id = reader.GetInt32("software_id");
+                software.Name = reader.GetString("software_name");
                 software.Description = reader.GetString("description");
-                software.AdditionalInformation = reader.GetString("additional_information");
+                software.LastReviewed = DateOnly.FromDateTime(reader.GetDateTime("last_review_date"));
+                software.LastDemoDate = DateOnly.FromDateTime(reader.GetDateTime("last_demo_date"));
                 software.ImageUrl = reader.GetString("image_url");
-                software.LastReviewed = DateOnly.FromDateTime(reader.GetDateTime("last_reviewed"));
-                software.Category = reader.GetString("category");
+                software.Category = reader.GetString("category_name");
             }
 
             connection.Close();
@@ -47,7 +51,10 @@ namespace toolsuiteapp.Data
             connection.Open();
 
             var command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM software;";
+            command.CommandText = @"
+            SELECT softwares.*, categories.* 
+            FROM softwares 
+            JOIN categories ON categories.software_id = softwares.software_id";
 
             using var reader = command.ExecuteReader();
             var softwareList = new List<Software>();
@@ -56,13 +63,13 @@ namespace toolsuiteapp.Data
             {
                 softwareList.Add(new()
                 {
-                    Id = reader.GetInt32("id"),
-                    Name = reader.GetString("name"),
+                    Id = reader.GetInt32("software_id"),
+                    Name = reader.GetString("software_name"),
                     Description = reader.GetString("description"),
-                    AdditionalInformation = reader.GetString("additional_information"),
                     ImageUrl = reader.GetString("image_url"),
-                    LastReviewed = DateOnly.FromDateTime(reader.GetDateTime("last_reviewed")),
-                    Category = reader.GetString("category")
+                    LastReviewed = DateOnly.FromDateTime(reader.GetDateTime("last_review_date")),
+                    LastDemoDate = DateOnly.FromDateTime(reader.GetDateTime("last_demo_date")),
+                    Category = reader.GetString("category_name")
                 });
             }
 

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using toolsuiteapp.Data;
 using toolsuiteapp.Model;
 using toolsuiteapp.Service;
 
@@ -15,6 +16,7 @@ namespace toolsuiteapp.View
 {
     public partial class SoftwareInfoBaseForm : Form
     {
+        private readonly VendorRepository _vendorRepository = new();
         private readonly Software _software;
 
         private bool editButtonClicked = false;
@@ -33,13 +35,17 @@ namespace toolsuiteapp.View
             softwareNameLabel.Text = _software.Name;
             softwareImageBox.Image = Image.FromFile(_software.ImageUrl);
             softwareDescriptionTextBox.Text = _software.Description;
+            softwareLastReviewedLabel.Text = _software.LastReviewed.ToString();
+            softwareLastDemoLabel.Text = _software.LastDemoDate.ToString();
 
-            if (!string.IsNullOrEmpty(_software.AdditionalInformation))
-            {
-                softwareAdditionalInfoLabel.Visible = true;
-                softwareAdditionalInfoTextBox.Visible = true;
-                softwareAdditionalInfoTextBox.Text = _software.AdditionalInformation;
-            }
+            var vendor = _vendorRepository.Get(_software.Id);
+
+            vendorNameTextBox.Text = vendor.Name;
+            vendorDateEstablishedTextBox.Text = vendor.DateEstablished.ToString();
+            vendorEmployeeAmountTextBox.Text = vendor.EmployeeAmount.ToString();
+            vendorWebsiteUrlTextBox.Text = vendor.WebsiteUrl;
+            vendorContactNumbesTextBox.Text = vendor.ContactNumbers;
+            vendorLocationListTextBox.Text = vendor.Locations;
         }
 
         private void EditButton_Click(object sender, EventArgs e)
@@ -47,33 +53,6 @@ namespace toolsuiteapp.View
             editButtonClicked = true;
         }
 
-        public void screenPicBox1_Click(object sender, EventArgs e)
-        {
-            UserSession userSession = new UserSession();
-            string currentUser = userSession.GetRole();
-
-            if (currentUser == "Admin")
-            {
-                EditButton.Visible = true;
-
-                if (editButtonClicked)
-                {
-                    OpenFileDialog ofd = new OpenFileDialog();
-                    ofd.Filter = "JPEG file|*.jpeg;*.jpeg";
-                    if (ofd.ShowDialog() == DialogResult.OK)// this will open the file dialogue to enable the user choose a photo 
-                    {
-                        screenPicBox1.Image = new Bitmap(ofd.FileName);
-                    }
-                }
-                // make the pictureBox editable for the admin
-
-            }
-            else
-            {
-                MessageBox.Show(Text, "Add to Wishlist?");
-            }
-
-        }
 
         public void websiteLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -112,5 +91,19 @@ namespace toolsuiteapp.View
         }
 
 
+        private void vendorUpdateButton_Click(object sender, EventArgs e)
+        {
+            _vendorRepository.Update(
+                new()
+                {
+                    Name = vendorNameTextBox.Text,
+                    DateEstablished = DateOnly.Parse(vendorDateEstablishedTextBox.Text),
+                    EmployeeAmount = int.Parse(vendorEmployeeAmountTextBox.Text),
+                    WebsiteUrl = vendorWebsiteUrlTextBox.Text,
+                    ContactNumbers = vendorContactNumbesTextBox.Text,
+                    Locations = vendorLocationListTextBox.Text
+                }
+            );
+        }
     }
 }
