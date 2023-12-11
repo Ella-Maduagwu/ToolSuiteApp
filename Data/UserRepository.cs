@@ -12,6 +12,7 @@ using System.Net.Mail;
 using System.Security.Cryptography.X509Certificates;
 using toolsuiteapp.Service;
 using System.Diagnostics.Eventing.Reader;
+using toolsuiteapp.Data;
 
 namespace toolsuiteapp.Data
 {
@@ -406,4 +407,104 @@ namespace toolsuiteapp.Data
             return results;
         }
     }
+
+    namespace toolsuiteapp.Controller
+    {
+        public class AddSoftwaresController
+        {
+            private UserRepository _userRepository;
+            public AddSoftwaresController()
+            {
+                _userRepository = new UserRepository();
+            }
+
+            public void SavePictures(byte[] imageBytes)
+            {
+                _userRepository.SaveImagesToDB(imageBytes);
+            }
+            public void SaveLogo(byte[] imageBytes)
+            {
+                _userRepository.SaveLogoToDB(imageBytes);
+            }
+
+            public void SavePdf(byte[] pdfBytes)
+            {
+                _userRepository.SavePdfToDb(pdfBytes);
+            }
+            public Image ConvertByteArrayToImage(byte[] imageBytes)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    return Image.FromStream(ms);
+                }
+            }
+        }
+    }
+    public void SaveImagesToDB(byte[] imagebytes)
+    {
+        try
+        {
+            using var connection = new MySqlConnection(_connectionString);
+            connection.Open();
+
+            var command = new MySqlCommand("INSERT INTO softwares (logo) VALUES (@Image)", connection);
+            command.Parameters.AddWithValue("@Image", imagebytes);
+
+            // Execute the command to insert data into the database
+            command.ExecuteNonQuery();
+        }
+        catch (Exception ex)
+        {
+            Logger logger = new Logger();
+            logger.LogException(ex);
+        }
+    }
+
+    public void SavePdfToDb(byte[] pdfbytes)
+    {
+        try
+        {
+            using var connection = new MySqlConnection(_connectionString);
+            connection.Open();
+            var command = new MySqlCommand("INSERT INTO software (pdf) VALUES (@File)", connection);
+            command.Parameters.AddWithValue("@File", pdfbytes);
+        }
+        catch (Exception ex)
+        {
+            Logger logger = new Logger();
+            logger.LogException(ex);
+        }
+    }
+    public byte[] GetLogoImage(string softwareName)
+    {
+        byte[] imagebytes = null;
+        try
+        {
+            using var connection = new MySqlConnection(_connectionString);
+            connection.Open();
+            var command = new MySqlCommand("SELECT logo FROM softwares WHERE software_name = @softwareName", connection);
+            command.Parameters.AddWithValue("@softwareName", softwareName);
+            using (var reader = command.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    imagebytes = (byte[])reader["logo"];
+                }
+            }
+        }
+
+        catch (Exception ex)
+        {
+            Logger logger = new Logger();
+            logger.LogException(ex);
+        }
+
+
+
+        return imagebytes;
+    }
+
+
 }
+
+
