@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("toolsuiteapp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ddde1c4f4203506339cd261bd236bbe6d24db539")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("toolsuiteapp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("toolsuiteapp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
